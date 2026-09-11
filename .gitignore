@@ -34,3 +34,41 @@ pnpm-debug.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# harness
+.agent
+.agents
+.claude
+.opencode
+.github
+.gemini
+
+# ---
+
+# react-doctor
+react-doctor-output.json
+
+# others
+/temp
+
+# graphify
+graphify-out/cost.json
+graphify-out/cache/
+# Dated snapshot backup folders (keep root graph.json / manifest.json / wiki/ instead)
+graphify-out/20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]/
+# Intermediate build sidecar files (regenerated on every build)
+graphify-out/.graphify_detect.json
+graphify-out/.graphify_ast.json
+graphify-out/.graphify_semantic.json
+graphify-out/.graphify_semantic_new.json
+graphify-out/.graphify_cached.json
+graphify-out/.graphify_extract.json
+graphify-out/.graphify_incremental.json
+graphify-out/.graphify_chunk_*.json
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/

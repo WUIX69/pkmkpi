@@ -1,0 +1,31 @@
+# .graphifyignore
+# Dependencies and build outputs
+node_modules/
+dist/
+.next/
+*.tsbuildinfo
+
+# Test files and outputs
+# (prevents test fixtures from skewing "core abstractions" and god nodes)
+tests/
+fixtures/
+test-results/
+playwright-report/
+blob-report/
+
+# Large diffs, logs, temp scratchpads
+diff.txt
+*.log
+temp/
+scratch/
+
+# Agent internals (not part of the application graph)
+.agent/
+.agents/
+.claude/
+.opencode/
+.github/
+.gemini/
+
+# Graphify internal outputs (don't recurse into the graph itself)
+graphify-out/
