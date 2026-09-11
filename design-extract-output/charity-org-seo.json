@@ -1,0 +1,59 @@
+{
+  "openGraph": {
+    "locale": "en_US",
+    "type": "website",
+    "title": "Homepage - Global Impact",
+    "description": "Global Impact serves as a trusted philanthropy advisor, intermediary, and nonprofit partner for greater giving.",
+    "url": "https://charity.org/",
+    "site_name": "Global Impact",
+    "image": "https://charity.org/wp-content/uploads/2026/08/GIV_AllStaff-423-1-scaled.jpg",
+    "image:width": "2560",
+    "image:height": "1786",
+    "image:type": "image/jpeg"
+  },
+  "twitter": {
+    "card": "summary_large_image",
+    "site": "@charitydotorg"
+  },
+  "description": "Global Impact serves as a trusted philanthropy advisor, intermediary, and nonprofit partner for greater giving.",
+  "canonical": null,
+  "themeColor": null,
+  "viewport": "width=device-width, initial-scale=1",
+  "favicons": [
+    {
+      "rel": "icon",
+      "href": "https://charity.org/wp-content/uploads/2022/03/global-impact-favicon.png",
+      "sizes": "32x32",
+      "type": ""
+    },
+    {
+      "rel": "icon",
+      "href": "https://charity.org/wp-content/uploads/2022/03/global-impact-favicon.png",
+      "sizes": "192x192",
+      "type": ""
+    },
+    {
+      "rel": "apple-touch-icon",
+      "href": "https://charity.org/wp-content/uploads/2022/03/global-impact-favicon.png",
+      "sizes": "",
+      "type": ""
+    }
+  ],
+  "manifest": null,
+  "structuredData": [
+    {
+      "type": "Thing",
+      "name": null,
+      "sample": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://charity.org/\",\"url\":\"https://charity.org/\",\"name\":\"Homepage - Global Impact\",\"isPartOf\":{\"@id\":\"https://charity.org/#website\"},\"about\":{\"@id\":\"https://charity.org/#organization\"},\"primaryImageOfPage\":{\"@id\":\"https://charity.org/#primaryimage\"},\"image\":{\"@id\":\"https://charity.org/#primaryimage\"},\"thumbnailUrl\":\"https://cha"
+    }
+  ],
+  "score": {
+    "hasOg": true,
+    "hasTwitter": true,
+    "hasDescription": true,
+    "hasCanonical": false,
+    "hasStructuredData": true,
+    "hasFavicon": true,
+    "hasThemeColor": false
+  }
+}

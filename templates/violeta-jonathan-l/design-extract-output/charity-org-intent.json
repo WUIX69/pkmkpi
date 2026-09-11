@@ -1,0 +1,232 @@
+{
+  "pageIntent": {
+    "type": "landing",
+    "confidence": 0.29,
+    "path": "/",
+    "title": "Homepage - Global Impact",
+    "description": "Global Impact serves as a trusted philanthropy advisor, intermediary, and nonprofit partner for greater giving.",
+    "signals": [
+      {
+        "kind": "dom",
+        "type": "legal",
+        "weight": 0.4
+      },
+      {
+        "kind": "url",
+        "type": "landing",
+        "weight": 0.45,
+        "detail": "root-path"
+      }
+    ],
+    "alternates": [
+      {
+        "type": "legal",
+        "score": 0.4
+      }
+    ],
+    "needsSmart": true
+  },
+  "sectionRoles": {
+    "sections": [
+      {
+        "index": 0,
+        "tag": "header",
+        "role": "nav",
+        "subrole": null,
+        "confidence": 0.4,
+        "heading": null,
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 195.46875
+        },
+        "buttonCount": 10,
+        "cardCount": 108,
+        "slots": {
+          "ctaCount": 10,
+          "lede": "Global Impact is part of Global Impact Ventures"
+        },
+        "needsSmart": true
+      },
+      {
+        "index": 1,
+        "tag": "nav",
+        "role": "nav",
+        "subrole": null,
+        "confidence": 0.9,
+        "heading": null,
+        "bounds": {
+          "x": 1008.03125,
+          "y": 15,
+          "w": 207.96875,
+          "h": 28
+        },
+        "buttonCount": 0,
+        "cardCount": 4,
+        "slots": {
+          "lede": "Subscribe\nCharity Alliance"
+        },
+        "needsSmart": false
+      },
+      {
+        "index": 2,
+        "tag": "nav",
+        "role": "nav",
+        "subrole": null,
+        "confidence": 0.9,
+        "heading": null,
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "buttonCount": 0,
+        "cardCount": 4,
+        "slots": {
+          "lede": "Subscribe\nCharity Alliance"
+        },
+        "needsSmart": false
+      },
+      {
+        "index": 3,
+        "tag": "nav",
+        "role": "nav",
+        "subrole": null,
+        "confidence": 0.9,
+        "heading": null,
+        "bounds": {
+          "x": 416.59375,
+          "y": 70.796875,
+          "w": 749.078125,
+          "h": 111.875
+        },
+        "buttonCount": 0,
+        "cardCount": 50,
+        "slots": {
+          "lede": "ABOUT\nEXPERTISE\nWHO WE SERVE\nBLOG\nDONATE\nPartner with Us"
+        },
+        "needsSmart": false
+      },
+      {
+        "index": 4,
+        "tag": "nav",
+        "role": "nav",
+        "subrole": null,
+        "confidence": 0.9,
+        "heading": null,
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "buttonCount": 0,
+        "cardCount": 50,
+        "slots": {
+          "lede": "About"
+        },
+        "needsSmart": false
+      },
+      {
+        "index": 5,
+        "tag": "footer",
+        "role": "footer",
+        "subrole": null,
+        "confidence": 0.95,
+        "heading": null,
+        "bounds": {
+          "x": 0,
+          "y": 4189.203125,
+          "w": 1280,
+          "h": 519.375
+        },
+        "buttonCount": 5,
+        "cardCount": 22,
+        "slots": {
+          "ctaCount": 5,
+          "lede": "Facebook\n \nYoutube\n \nLinkedin"
+        },
+        "needsSmart": false
+      },
+      {
+        "index": 6,
+        "tag": "nav",
+        "role": "nav",
+        "subrole": null,
+        "confidence": 0.9,
+        "heading": null,
+        "bounds": {
+          "x": 738.265625,
+          "y": 4396.109375,
+          "w": 209.015625,
+          "h": 104
+        },
+        "buttonCount": 0,
+        "cardCount": 8,
+        "slots": {
+          "lede": "Legal Disclosure\nPrivacy Policy\nCharity Alliance Portal\nEmployee Giving Hub"
+        },
+        "needsSmart": false
+      },
+      {
+        "index": 7,
+        "tag": "nav",
+        "role": "nav",
+        "subrole": null,
+        "confidence": 0.9,
+        "heading": null,
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "buttonCount": 0,
+        "cardCount": 8,
+        "slots": {
+          "lede": "Legal Disclosure\nPrivacy Policy\nCharity Alliance Portal\nEmployee Giving Hub"
+        },
+        "needsSmart": false
+      },
+      {
+        "index": 8,
+        "tag": "aside",
+        "role": "sidebar",
+        "subrole": null,
+        "confidence": 0.4,
+        "heading": null,
+        "bounds": {
+          "x": 0,
+          "y": 737,
+          "w": 1280,
+          "h": 63
+        },
+        "buttonCount": 4,
+        "cardCount": 0,
+        "slots": {
+          "ctaCount": 4,
+          "lede": "We are using cookies to give you the best experience on our website."
+        },
+        "needsSmart": true
+      }
+    ],
+    "counts": {
+      "nav": 7,
+      "footer": 1,
+      "sidebar": 1
+    },
+    "readingOrder": [
+      "nav",
+      "nav",
+      "nav",
+      "nav",
+      "nav",
+      "nav",
+      "sidebar",
+      "footer",
+      "nav"
+    ]
+  }
+}
