@@ -1,0 +1,406 @@
+/* PKMKPI V2 Component & Surface Styles (Charity.org Palette) */
+
+:root {
+  --glass-bg-light: rgba(255, 255, 255, 0.88);
+  --glass-bg-dark: rgba(6, 51, 60, 0.90);
+  --glass-border-light: rgba(226, 232, 240, 0.85);
+  --glass-border-dark: rgba(255, 255, 255, 0.15);
+  --glass-blur: 16px;
+}
+
+/* Light & Dark Frosted Glass Surfaces */
+.glass-card {
+  background: #FFFFFF;
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border-light);
+  box-shadow: 0 4px 20px -2px rgba(6, 51, 60, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px -4px rgba(6, 51, 60, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  border-color: rgba(128, 188, 47, 0.45);
+}
+
+.glass-dark {
+  background: #06333C;
+  background: var(--glass-bg-dark);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border-dark);
+  box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+/* Floating Island Navigation (Lowered & Transparent on Hero, Solid Frosted White on Scroll) */
+header.site-header {
+  position: fixed !important;
+  top: 4.75rem;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  width: 100%;
+  padding: 0 1rem;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: top 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#mobile-menu {
+  pointer-events: auto !important;
+  width: 100%;
+  max-width: 1200px;
+}
+
+@media (max-width: 640px) {
+  header.site-header {
+    top: 7.25rem;
+  }
+}
+
+@media (max-width: 420px) {
+  header.site-header {
+    top: 7.75rem;
+  }
+}
+
+header.site-header.scrolled {
+  top: 0.75rem !important;
+}
+
+/* Consistent Transparent Frosted Island Navigation Across All States */
+.floating-island-nav {
+  pointer-events: auto;
+  background: rgba(6, 51, 60, 0.50) !important;
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  border-radius: 9999px;
+  box-shadow: 0 12px 36px -4px rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.55rem 1.4rem;
+  width: 100%;
+  max-width: 1200px;
+  transition: background 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.floating-island-nav .nav-link {
+  color: #FFFFFF !important;
+}
+
+.floating-island-nav .nav-link:hover,
+.floating-island-nav .nav-link.active {
+  color: #80BC2F !important;
+}
+
+.floating-island-nav .brand-title {
+  color: #FFFFFF !important;
+}
+
+.floating-island-nav .brand-subtitle {
+  color: #D1D5DB !important;
+}
+
+.floating-island-nav #mobile-menu-btn {
+  color: #FFFFFF !important;
+}
+
+.floating-island-nav #mobile-menu-btn:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Scrolled Docked State (Enhanced Shadow & Border, Retains Transparent Glass) */
+.floating-island-nav.nav-scrolled {
+  background: rgba(6, 51, 60, 0.68) !important;
+  backdrop-filter: blur(22px) saturate(190%);
+  -webkit-backdrop-filter: blur(22px) saturate(190%);
+  border-color: rgba(128, 188, 47, 0.45) !important;
+  box-shadow: 0 18px 45px -5px rgba(0, 0, 0, 0.45), 0 4px 12px -2px rgba(6, 51, 60, 0.2);
+}
+
+/* Polished Nav Link Underline State */
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 700;
+  color: #333333;
+  transition: color 0.2s ease;
+  padding: 6px 0;
+}
+
+.nav-link:hover {
+  color: #80BC2F;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #80BC2F;
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 2px;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: #06333C;
+  font-weight: 900;
+}
+
+/* Sliding Right-Side Drawer Panel & Overlay */
+#drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 90;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#drawer-overlay.open {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+#sector-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 440px;
+  max-width: 100vw;
+  height: 100vh;
+  background-color: var(--color-secondary);
+  transform: translateX(100%) !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, visibility 0.35s ease;
+  z-index: 100;
+  overflow-y: auto;
+  padding: 2rem;
+}
+
+#sector-drawer.open {
+  transform: translateX(0) !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  opacity: 1 !important;
+  box-shadow: rgba(0, 0, 0, 0.6) -10px 0px 40px 0px;
+}
+
+/* Global 1-Click Copy Toast */
+#copy-toast {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translate(-50%, 100px);
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  border-radius: 9999px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 900;
+  font-size: 0.75rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#copy-toast.show {
+  transform: translate(-50%, 0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+/* Button Pills */
+.btn-pill-primary {
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  border-radius: 9999px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+              background-color 0.2s ease, 
+              box-shadow 0.25s ease;
+  box-shadow: 0 4px 14px rgba(128, 188, 47, 0.35);
+}
+
+.btn-pill-primary:hover {
+  background-color: #71A827;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(128, 188, 47, 0.45);
+}
+
+.btn-pill-primary:active {
+  transform: translateY(0px) scale(0.98);
+}
+
+.btn-pill-secondary {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  border-radius: 9999px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-pill-secondary:hover {
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(128, 188, 47, 0.3);
+}
+
+.btn-pill-secondary:active {
+  transform: translateY(0px);
+}
+
+/* 1-Click Copy Bank Cards */
+.bank-card {
+  background-color: var(--color-pure-white);
+  border-radius: 24px;
+  padding: 1.5rem;
+  cursor: pointer;
+  position: relative;
+  border: 1px solid #E5E7EB;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.25s ease;
+}
+
+.bank-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 16px 32px -8px rgba(6, 51, 60, 0.15);
+  transform: translateY(-4px);
+}
+
+/* Ambient Glow & Section Gradient Lighting Meshes */
+.ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  z-index: 0;
+  opacity: 0.22;
+  pointer-events: none;
+  animation: floatGlow 12s ease-in-out infinite alternate;
+}
+
+.glow-primary {
+  background-color: var(--color-primary);
+}
+
+.glow-secondary {
+  background-color: var(--color-secondary);
+}
+
+.glow-gold {
+  background-color: var(--color-accent-gold);
+}
+
+.glow-ocean {
+  background-color: var(--color-ocean-blue);
+}
+
+/* 1. Hero Atmospheric Gradient Mesh with Breathing Animation */
+.section-hero-gradient {
+  background-color: #06333C;
+  background-image: 
+    radial-gradient(circle at 12% 20%, rgba(128, 188, 47, 0.22) 0%, transparent 45%),
+    radial-gradient(circle at 88% 75%, rgba(235, 169, 47, 0.16) 0%, transparent 45%),
+    radial-gradient(circle at 50% 10%, rgba(21, 118, 141, 0.20) 0%, transparent 50%),
+    linear-gradient(135deg, #06333C 0%, #04252C 60%, #02171B 100%);
+  background-size: 130% 130%;
+  animation: heroGradientShift 18s ease-in-out infinite alternate;
+}
+
+/* 2. National Scope Atmospheric Gradient Mesh */
+.section-regions-gradient {
+  background-color: #06333C;
+  background-image: 
+    radial-gradient(circle at 15% 25%, rgba(128, 188, 47, 0.18) 0%, transparent 50%),
+    radial-gradient(circle at 85% 65%, rgba(235, 169, 47, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 50% 95%, rgba(21, 118, 141, 0.20) 0%, transparent 45%),
+    linear-gradient(180deg, #06333C 0%, #031F25 50%, #06333C 100%);
+  background-size: 130% 130%;
+  animation: heroGradientShift 22s ease-in-out infinite alternate-reverse;
+}
+
+/* 3. Footer Atmospheric Gradient Mesh */
+.section-footer-gradient {
+  background-color: #031F25;
+  background-image: 
+    radial-gradient(ellipse at 50% 0%, rgba(128, 188, 47, 0.14) 0%, transparent 65%),
+    radial-gradient(circle at 10% 100%, rgba(235, 169, 47, 0.08) 0%, transparent 40%),
+    linear-gradient(180deg, #04252C 0%, #02171B 100%);
+}
+
+@keyframes heroGradientShift {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
+}
+
+/* Glowing Top Rim Dividers */
+.gradient-rim-lime {
+  background: linear-gradient(90deg, transparent 0%, rgba(128, 188, 47, 0.7) 50%, transparent 100%);
+}
+
+.gradient-rim-aurora {
+  background: linear-gradient(90deg, transparent 0%, rgba(128, 188, 47, 0.8) 30%, rgba(235, 169, 47, 0.8) 70%, transparent 100%);
+}
+
+/* Cards Dark Glass Sheen */
+.card-sheen-dark {
+  background: linear-gradient(145deg, rgba(4, 37, 44, 0.95) 0%, rgba(6, 51, 60, 0.90) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.card-sheen-dark:hover {
+  border-color: rgba(128, 188, 47, 0.55);
+  box-shadow: 0 18px 36px -6px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}

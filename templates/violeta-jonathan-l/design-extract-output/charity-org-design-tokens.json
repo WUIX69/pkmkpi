@@ -1,0 +1,306 @@
+{
+  "$metadata": {
+    "generator": "designlang",
+    "version": "7.0.0",
+    "spec": "https://design-tokens.github.io/community-group/format/",
+    "source": "https://charity.org/",
+    "generatedAt": "2026-08-27T15:33:41.645Z"
+  },
+  "primitive": {
+    "color": {
+      "brand": {
+        "primary": {
+          "$value": "#80bc2f",
+          "$type": "color"
+        },
+        "secondary": {
+          "$value": "#06333c",
+          "$type": "color"
+        }
+      },
+      "neutral": {
+        "n100": {
+          "$value": "#333333",
+          "$type": "color"
+        },
+        "n200": {
+          "$value": "#ffffff",
+          "$type": "color"
+        },
+        "n300": {
+          "$value": "#000000",
+          "$type": "color"
+        },
+        "n400": {
+          "$value": "#202020",
+          "$type": "color"
+        },
+        "n500": {
+          "$value": "#f1f1f1",
+          "$type": "color"
+        }
+      },
+      "background": {
+        "bg0": {
+          "$value": "#ffffff",
+          "$type": "color"
+        },
+        "bg1": {
+          "$value": "#80bc00",
+          "$type": "color"
+        },
+        "bg2": {
+          "$value": "#06333c",
+          "$type": "color"
+        },
+        "bg3": {
+          "$value": "#80bc2f",
+          "$type": "color"
+        },
+        "bg4": {
+          "$value": "#d15e1e",
+          "$type": "color"
+        },
+        "bg5": {
+          "$value": "#eba92f",
+          "$type": "color"
+        },
+        "bg6": {
+          "$value": "#772583",
+          "$type": "color"
+        },
+        "bg7": {
+          "$value": "#15768d",
+          "$type": "color"
+        }
+      },
+      "text": {
+        "text0": {
+          "$value": "#000000",
+          "$type": "color"
+        },
+        "text1": {
+          "$value": "#333333",
+          "$type": "color"
+        },
+        "text2": {
+          "$value": "#06333c",
+          "$type": "color"
+        },
+        "text3": {
+          "$value": "#ffffff",
+          "$type": "color"
+        },
+        "text4": {
+          "$value": "#33373d",
+          "$type": "color"
+        },
+        "text5": {
+          "$value": "#6ec1e4",
+          "$type": "color"
+        },
+        "text6": {
+          "$value": "#15768d",
+          "$type": "color"
+        },
+        "text7": {
+          "$value": "#80bc2f",
+          "$type": "color"
+        },
+        "text8": {
+          "$value": "#eba92f",
+          "$type": "color"
+        },
+        "text9": {
+          "$value": "#d15e1e",
+          "$type": "color"
+        }
+      }
+    },
+    "spacing": {
+      "s0": {
+        "$value": "1px",
+        "$type": "dimension"
+      },
+      "s1": {
+        "$value": "30px",
+        "$type": "dimension"
+      },
+      "s2": {
+        "$value": "34px",
+        "$type": "dimension"
+      },
+      "s3": {
+        "$value": "38px",
+        "$type": "dimension"
+      },
+      "s4": {
+        "$value": "46px",
+        "$type": "dimension"
+      },
+      "s5": {
+        "$value": "60px",
+        "$type": "dimension"
+      },
+      "s6": {
+        "$value": "64px",
+        "$type": "dimension"
+      },
+      "s7": {
+        "$value": "68px",
+        "$type": "dimension"
+      },
+      "s8": {
+        "$value": "75px",
+        "$type": "dimension"
+      },
+      "s9": {
+        "$value": "78px",
+        "$type": "dimension"
+      },
+      "s10": {
+        "$value": "84px",
+        "$type": "dimension"
+      },
+      "s11": {
+        "$value": "90px",
+        "$type": "dimension"
+      },
+      "s12": {
+        "$value": "134px",
+        "$type": "dimension"
+      },
+      "s13": {
+        "$value": "160px",
+        "$type": "dimension"
+      },
+      "s14": {
+        "$value": "264px",
+        "$type": "dimension"
+      }
+    },
+    "radius": {
+      "r0": {
+        "$value": "3px",
+        "$type": "dimension"
+      },
+      "r1": {
+        "$value": "7px",
+        "$type": "dimension"
+      },
+      "r2": {
+        "$value": "10px",
+        "$type": "dimension"
+      },
+      "r3": {
+        "$value": "25px",
+        "$type": "dimension"
+      },
+      "r4": {
+        "$value": "34px",
+        "$type": "dimension"
+      },
+      "r5": {
+        "$value": "50px",
+        "$type": "dimension"
+      }
+    },
+    "shadow": {
+      "sh0": {
+        "$value": "rgba(0, 0, 0, 0) 1px 1px 0px 0px",
+        "$type": "shadow"
+      },
+      "sh1": {
+        "$value": "rgba(0, 0, 0, 0.24) 0px 0px 10px 0px",
+        "$type": "shadow"
+      },
+      "sh2": {
+        "$value": "rgb(0, 0, 0) 8px 8px 5px 0px",
+        "$type": "shadow"
+      },
+      "sh3": {
+        "$value": "rgba(0, 0, 0, 0.99) 8px 8px 5px 0px",
+        "$type": "shadow"
+      },
+      "sh4": {
+        "$value": "rgba(0, 0, 0, 0.33) 0px 7px 10px -3px",
+        "$type": "shadow"
+      },
+      "sh5": {
+        "$value": "rgba(0, 0, 0, 0.89) 6px 5px 13px 0px",
+        "$type": "shadow"
+      },
+      "sh6": {
+        "$value": "rgba(35, 35, 35, 0.1) 0px 0px 30px 0px",
+        "$type": "shadow"
+      }
+    },
+    "fontFamily": {
+      "f0": {
+        "$value": "Montserrat",
+        "$type": "fontFamily"
+      },
+      "f1": {
+        "$value": "Times New Roman",
+        "$type": "fontFamily"
+      },
+      "f2": {
+        "$value": "turbinado-pro",
+        "$type": "fontFamily"
+      },
+      "f3": {
+        "$value": "eicons",
+        "$type": "fontFamily"
+      }
+    }
+  },
+  "semantic": {
+    "color": {
+      "action": {
+        "primary": {
+          "$value": "{primitive.color.brand.primary}",
+          "$type": "color"
+        },
+        "secondary": {
+          "$value": "{primitive.color.brand.secondary}",
+          "$type": "color"
+        }
+      },
+      "surface": {
+        "default": {
+          "$value": "{primitive.color.background.bg0}",
+          "$type": "color"
+        }
+      },
+      "text": {
+        "body": {
+          "$value": "{primitive.color.text.text0}",
+          "$type": "color"
+        }
+      }
+    },
+    "typography": {
+      "body": {
+        "$value": {
+          "fontFamily": "Montserrat",
+          "fontSize": "140px",
+          "fontWeight": "400",
+          "lineHeight": "140px"
+        },
+        "$type": "typography"
+      }
+    },
+    "radius": {
+      "control": {
+        "$value": "{primitive.radius.r0}",
+        "$type": "dimension"
+      }
+    },
+    "shadow": {
+      "elevated": {
+        "$value": "{primitive.shadow.sh0}",
+        "$type": "shadow"
+      }
+    }
+  }
+}

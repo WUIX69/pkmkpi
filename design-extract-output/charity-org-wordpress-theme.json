@@ -1,0 +1,192 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "color": {
+      "palette": [
+        {
+          "slug": "primary",
+          "color": "#80bc2f",
+          "name": "Primary"
+        },
+        {
+          "slug": "secondary",
+          "color": "#06333c",
+          "name": "Secondary"
+        },
+        {
+          "slug": "accent",
+          "color": "#eba92f",
+          "name": "Accent"
+        },
+        {
+          "slug": "neutral-1",
+          "color": "#333333",
+          "name": "Neutral 1"
+        },
+        {
+          "slug": "neutral-2",
+          "color": "#ffffff",
+          "name": "Neutral 2"
+        },
+        {
+          "slug": "neutral-3",
+          "color": "#000000",
+          "name": "Neutral 3"
+        },
+        {
+          "slug": "neutral-4",
+          "color": "#202020",
+          "name": "Neutral 4"
+        },
+        {
+          "slug": "neutral-5",
+          "color": "#f1f1f1",
+          "name": "Neutral 5"
+        },
+        {
+          "slug": "bg-ffffff",
+          "color": "#ffffff",
+          "name": "Background #ffffff"
+        },
+        {
+          "slug": "bg-80bc00",
+          "color": "#80bc00",
+          "name": "Background #80bc00"
+        },
+        {
+          "slug": "bg-06333c",
+          "color": "#06333c",
+          "name": "Background #06333c"
+        }
+      ],
+      "gradients": []
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "fontFamily": "Montserrat",
+          "slug": "montserrat",
+          "name": "Montserrat"
+        },
+        {
+          "fontFamily": "Times New Roman",
+          "slug": "times-new-roman",
+          "name": "Times New Roman"
+        },
+        {
+          "fontFamily": "turbinado-pro",
+          "slug": "turbinado-pro",
+          "name": "turbinado-pro"
+        },
+        {
+          "fontFamily": "eicons",
+          "slug": "eicons",
+          "name": "eicons"
+        }
+      ],
+      "fontSizes": [
+        {
+          "size": "140px",
+          "slug": "size-140",
+          "name": "140px"
+        },
+        {
+          "size": "130px",
+          "slug": "size-130",
+          "name": "130px"
+        },
+        {
+          "size": "90px",
+          "slug": "size-90",
+          "name": "90px"
+        },
+        {
+          "size": "86px",
+          "slug": "size-86",
+          "name": "86px"
+        },
+        {
+          "size": "80px",
+          "slug": "size-80",
+          "name": "80px"
+        },
+        {
+          "size": "72px",
+          "slug": "size-72",
+          "name": "72px"
+        },
+        {
+          "size": "64px",
+          "slug": "size-64",
+          "name": "64px"
+        },
+        {
+          "size": "50px",
+          "slug": "size-50",
+          "name": "50px"
+        }
+      ]
+    },
+    "spacing": {
+      "spacingSizes": [
+        {
+          "size": "1px",
+          "slug": "spacing-1",
+          "name": "1px"
+        },
+        {
+          "size": "30px",
+          "slug": "spacing-30",
+          "name": "30px"
+        },
+        {
+          "size": "34px",
+          "slug": "spacing-34",
+          "name": "34px"
+        },
+        {
+          "size": "38px",
+          "slug": "spacing-38",
+          "name": "38px"
+        },
+        {
+          "size": "46px",
+          "slug": "spacing-46",
+          "name": "46px"
+        },
+        {
+          "size": "60px",
+          "slug": "spacing-60",
+          "name": "60px"
+        },
+        {
+          "size": "64px",
+          "slug": "spacing-64",
+          "name": "64px"
+        },
+        {
+          "size": "68px",
+          "slug": "spacing-68",
+          "name": "68px"
+        }
+      ]
+    },
+    "layout": {
+      "contentSize": "100%",
+      "wideSize": "1400px"
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "#ffffff",
+      "text": "#000000"
+    },
+    "typography": {
+      "fontSize": "13px",
+      "lineHeight": "19.5px",
+      "fontFamily": "Montserrat"
+    },
+    "spacing": {}
+  }
+}
