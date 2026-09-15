@@ -15,6 +15,13 @@ const __dirname = path.dirname(__filename);
 const ROOT_DIR = path.resolve(__dirname, "..");
 const PID_FILE = path.join(ROOT_DIR, ".templates-pids.json");
 
+process.on("uncaughtException", (err) => {
+  console.error("Daemon uncaughtException:", err.message);
+});
+process.on("unhandledRejection", (reason) => {
+  console.error("Daemon unhandledRejection:", reason);
+});
+
 const MIME_TYPES = {
   ".html": "text/html; charset=UTF-8",
   ".css": "text/css; charset=UTF-8",
@@ -139,7 +146,15 @@ export async function checkPortAvailable(port) {
 export function startStaticServer(rootDir, port) {
   const resolvedRoot = path.resolve(ROOT_DIR, rootDir);
   const server = http.createServer((req, res) => {
-    let reqPath = decodeURIComponent(req.url.split("?")[0]);
+    req.on("error", (err) => console.error(`[Static :${port}] Request error:`, err.message));
+    res.on("error", (err) => console.error(`[Static :${port}] Response error:`, err.message));
+
+    let reqPath;
+    try {
+      reqPath = decodeURIComponent(req.url.split("?")[0]);
+    } catch {
+      reqPath = req.url.split("?")[0];
+    }
     if (reqPath === "/") reqPath = "/index.html";
 
     let filePath = path.normalize(path.join(resolvedRoot, reqPath));
@@ -183,8 +198,9 @@ export function startStaticServer(rootDir, port) {
   });
 
   return new Promise((resolve, reject) => {
-    server.on("error", reject);
+    server.once("error", reject);
     server.listen(port, () => {
+      server.on("error", (err) => console.error(`[Static :${port}] Server error:`, err.message));
       resolve(server);
     });
   });
@@ -343,7 +359,7 @@ async function serveTemplate(name) {
     const child = spawn(config.command, config.args, {
       cwd,
       stdio: "inherit",
-      shell: process.platform === "win32",
+      shell: false,
     });
     console.log(`Template "${name}" [${config.type}] process running (PID: ${child.pid})...`);
     child.on("exit", (code) => process.exit(code || 0));
@@ -357,17 +373,12 @@ async function serveAll() {
   console.log("Starting all 7 PKMKPI templates concurrently in background daemon...");
 
   const scriptPath = fileURLToPath(import.meta.url);
-  if (process.platform === "win32") {
-    const psCmd = `Start-Process -FilePath '${process.execPath}' -ArgumentList @('${scriptPath}', 'daemon') -WindowStyle Hidden`;
-    spawnSync("powershell", ["-NoProfile", "-Command", psCmd], { stdio: "inherit" });
-  } else {
-    const child = spawn(process.execPath, [scriptPath, "daemon"], {
-      cwd: ROOT_DIR,
-      detached: true,
-      stdio: "ignore",
-    });
-    child.unref();
-  }
+  const child = spawn(process.execPath, [scriptPath, "daemon"], {
+    cwd: ROOT_DIR,
+    detached: true,
+    stdio: "ignore",
+  });
+  child.unref();
 
   // Wait for binding
   await new Promise((resolve) => setTimeout(resolve, 3000));

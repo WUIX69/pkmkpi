@@ -129,8 +129,31 @@ def audit_template(browser, template: dict) -> dict:
                 };
             }""")
 
+            # Wait for images and resources to settle
+            try:
+                page.wait_for_load_state("load", timeout=3000)
+            except Exception:
+                pass
+
+            # Check image integrity: all completed <img> tags must have naturalWidth > 0
+            broken_images = page.evaluate("""() => {
+                const images = Array.from(document.querySelectorAll('img'));
+                return images
+                    .filter(img => img.complete && img.naturalWidth === 0)
+                    .map(img => img.src || img.getAttribute('src') || '<missing src>');
+            }""")
+
             if overflow_data["hasOverflow"]:
                 msg = f"Overflow detected (scrollWidth: {overflow_data['maxScrollWidth']}px > clientWidth: {overflow_data['clientWidth']}px)"
+                print(f"  [FAIL] {vp_name} ({width}x{height}) - {msg}")
+                template_passed = False
+                viewport_results.append({
+                    "viewport": vp_name,
+                    "passed": False,
+                    "reason": msg,
+                })
+            elif len(broken_images) > 0:
+                msg = f"Broken images ({len(broken_images)}): {'; '.join(broken_images[:3])}"
                 print(f"  [FAIL] {vp_name} ({width}x{height}) - {msg}")
                 template_passed = False
                 viewport_results.append({
@@ -149,7 +172,7 @@ def audit_template(browser, template: dict) -> dict:
                     "reason": msg,
                 })
             else:
-                print(f"  [PASS] {vp_name} ({width}x{height}) - Status 200, 0 overflow, 0 errors")
+                print(f"  [PASS] {vp_name} ({width}x{height}) - Status 200, 0 overflow, 0 errors, images verified")
                 viewport_results.append({
                     "viewport": vp_name,
                     "passed": True,
