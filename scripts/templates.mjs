@@ -495,12 +495,36 @@ export async function exportTemplates() {
       const leonorDist = path.join(leonorDir, "dist");
       if (fs.existsSync(leonorDist)) {
         fs.cpSync(leonorDist, leonorDest, { recursive: true });
+        const htmlFile = path.join(leonorDest, "index.html");
+        if (fs.existsSync(htmlFile)) {
+          let html = fs.readFileSync(htmlFile, "utf-8");
+          html = html.replace(/src="\/assets\//g, 'src="./assets/');
+          html = html.replace(/href="\/assets\//g, 'href="./assets/');
+          html = html.replace(/href="\/favicon/g, 'href="./favicon');
+          fs.writeFileSync(htmlFile, html, "utf-8");
+        }
       }
     } catch (err) {
       console.warn(`[Export] Warning: Vite build failed for leonor-olivera: ${err.message}. Preserving committed preview.`);
     }
   } else {
     console.log(`[Export] Vite dependencies for leonor-olivera not present. Preserving committed preview.`);
+  }
+
+  // Safety check on existing leonor preview index.html
+  const existingLeonorHtml = path.join(leonorDest, "index.html");
+  if (fs.existsSync(existingLeonorHtml)) {
+    let html = fs.readFileSync(existingLeonorHtml, "utf-8");
+    let changed = false;
+    if (html.includes('src="/assets/') || html.includes('href="/assets/') || html.includes('href="/favicon')) {
+      html = html.replace(/src="\/assets\//g, 'src="./assets/');
+      html = html.replace(/href="\/assets\//g, 'href="./assets/');
+      html = html.replace(/href="\/favicon/g, 'href="./favicon');
+      changed = true;
+    }
+    if (changed) {
+      fs.writeFileSync(existingLeonorHtml, html, "utf-8");
+    }
   }
 
   // 3. Snapshot and copy neil-datuin-caguioa (PHP)
