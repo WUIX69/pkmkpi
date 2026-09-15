@@ -72,3 +72,8 @@ graphify-out/.graphify_chunk_*.json
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+
+templates/**/node_modules
+.slash_tmp/
+.templates-pids.json
+

@@ -9,7 +9,12 @@
     "start": "next start",
     "lint": "eslint",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "templates:list": "node scripts/templates.mjs list",
+    "templates:serve": "node scripts/templates.mjs serve",
+    "templates:serve:all": "node scripts/templates.mjs serve:all",
+    "templates:audit": "python templates/tests/audit_all_templates.py",
+    "templates:kill": "node scripts/templates.mjs kill"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",
