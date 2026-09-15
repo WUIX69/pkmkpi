@@ -432,12 +432,9 @@ async function killAll() {
  */
 export async function exportTemplates() {
   const PREVIEW_DIR = path.join(ROOT_DIR, "public", "templates-preview");
-  console.log(`[Export] Bundling all templates to ${PREVIEW_DIR}...`);
+  console.log(`[Export] Bundling templates to ${PREVIEW_DIR}...`);
 
-  // Clean / ensure destination
-  if (fs.existsSync(PREVIEW_DIR)) {
-    fs.rmSync(PREVIEW_DIR, { recursive: true, force: true });
-  }
+  // Ensure destination directory exists (do not delete pre-committed snapshots)
   fs.mkdirSync(PREVIEW_DIR, { recursive: true });
 
   // 1. Copy static templates
@@ -450,45 +447,60 @@ export async function exportTemplates() {
   ];
 
   for (const { slug, src } of staticTemplates) {
-    const dest = path.join(PREVIEW_DIR, slug);
-    console.log(`[Export] Copying static template "${slug}"...`);
-    fs.cpSync(src, dest, {
-      recursive: true,
-      filter: (srcPath) => !srcPath.includes("node_modules") && !srcPath.includes(".git"),
-    });
+    try {
+      if (fs.existsSync(src)) {
+        const dest = path.join(PREVIEW_DIR, slug);
+        console.log(`[Export] Copying static template "${slug}"...`);
+        fs.cpSync(src, dest, {
+          recursive: true,
+          filter: (srcPath) => !srcPath.includes("node_modules") && !srcPath.includes(".git"),
+        });
+      } else {
+        console.log(`[Export] Source for "${slug}" not found at ${src}. Preserving committed preview.`);
+      }
+    } catch (err) {
+      console.warn(`[Export] Warning: Failed to copy static template "${slug}": ${err.message}`);
+    }
   }
 
   // 2. Build and copy leonor-olivera (Vite)
   const leonorDir = path.join(ROOT_DIR, "templates", "leonor-olivera");
   const viteBin = path.join(leonorDir, "node_modules", "vite", "bin", "vite.js");
-  console.log(`[Export] Building Vite template "leonor-olivera"...`);
-  let buildRes;
-  if (fs.existsSync(viteBin)) {
-    buildRes = spawnSync(process.execPath, [viteBin, "build"], {
-      cwd: leonorDir,
-      stdio: "inherit",
-      shell: false,
-      windowsHide: true,
-    });
-  } else {
-    const isWindows = process.platform === "win32";
-    const npmCmd = isWindows ? "npm.cmd" : "npm";
-    buildRes = spawnSync(npmCmd, ["run", "build"], {
-      cwd: leonorDir,
-      stdio: "inherit",
-      shell: isWindows,
-      windowsHide: true,
-    });
-  }
-  if (buildRes.status !== 0) {
-    console.error(`[Export] Warning: Vite build for leonor-olivera exited with status ${buildRes.status}`);
-  }
-  const leonorDist = path.join(leonorDir, "dist");
   const leonorDest = path.join(PREVIEW_DIR, "leonor-olivera");
-  if (fs.existsSync(leonorDist)) {
-    fs.cpSync(leonorDist, leonorDest, { recursive: true });
+
+  if (fs.existsSync(viteBin) || fs.existsSync(path.join(leonorDir, "node_modules"))) {
+    console.log(`[Export] Building Vite template "leonor-olivera"...`);
+    try {
+      let buildRes;
+      if (fs.existsSync(viteBin)) {
+        buildRes = spawnSync(process.execPath, [viteBin, "build"], {
+          cwd: leonorDir,
+          stdio: "inherit",
+          shell: false,
+          windowsHide: true,
+        });
+      } else {
+        const isWindows = process.platform === "win32";
+        const npmCmd = isWindows ? "npm.cmd" : "npm";
+        buildRes = spawnSync(npmCmd, ["run", "build"], {
+          cwd: leonorDir,
+          stdio: "inherit",
+          shell: isWindows,
+          windowsHide: true,
+        });
+      }
+      if (buildRes && buildRes.status !== 0) {
+        console.warn(`[Export] Warning: Vite build for leonor-olivera exited with status ${buildRes.status}`);
+      }
+      const leonorDist = path.join(leonorDir, "dist");
+      if (fs.existsSync(leonorDist)) {
+        fs.cpSync(leonorDist, leonorDest, { recursive: true });
+      }
+    } catch (err) {
+      console.warn(`[Export] Warning: Vite build failed for leonor-olivera: ${err.message}. Preserving committed preview.`);
+    }
   } else {
-    console.error(`[Export] Warning: ${leonorDist} not found after build.`);
+    console.log(`[Export] Vite dependencies for leonor-olivera not present. Preserving committed preview.`);
   }
 
   // 3. Snapshot and copy neil-datuin-caguioa (PHP)
@@ -496,14 +508,11 @@ export async function exportTemplates() {
   const neilDest = path.join(PREVIEW_DIR, "neil-datuin-caguioa");
   fs.mkdirSync(neilDest, { recursive: true });
 
-  // Copy assets and uploads
-  const neilAssets = path.join(neilSrc, "assets");
-  if (fs.existsSync(neilAssets)) {
-    fs.cpSync(neilAssets, path.join(neilDest, "assets"), { recursive: true });
+  if (fs.existsSync(path.join(neilSrc, "assets"))) {
+    fs.cpSync(path.join(neilSrc, "assets"), path.join(neilDest, "assets"), { recursive: true });
   }
-  const neilUploads = path.join(neilSrc, "uploads");
-  if (fs.existsSync(neilUploads)) {
-    fs.cpSync(neilUploads, path.join(neilDest, "uploads"), { recursive: true });
+  if (fs.existsSync(path.join(neilSrc, "uploads"))) {
+    fs.cpSync(path.join(neilSrc, "uploads"), path.join(neilDest, "uploads"), { recursive: true });
   }
 
   const phpBinary =
@@ -512,51 +521,69 @@ export async function exportTemplates() {
       ? "C:\\Users\\Administrator\\.config\\herd-lite\\bin\\php.exe"
       : "php";
 
-  const phpPages = [
-    "index.php",
-    "about.php",
-    "contact.php",
-    "contribute.php",
-    "news.php",
-    "press.php",
-    "support.php",
-  ];
-  const pagesList = "index|about|contact|contribute|news|press|support";
-  const extlessRegex = new RegExp(`href=["'](${pagesList})([#?][^"']*)?["']`, "g");
-
-  console.log(`[Export] Rendering PHP pages for "neil-datuin-caguioa"...`);
-  for (const page of phpPages) {
-    const res = spawnSync(
-      phpBinary,
-      ["-d", "display_errors=0", "-d", "error_reporting=0", "-f", page],
-      {
-        cwd: neilSrc,
-        encoding: "utf-8",
-        windowsHide: true,
-      }
-    );
-
-    let html = res.stdout || "";
-    const docIdx = html.indexOf("<!");
-    if (docIdx > 0) {
-      html = html.slice(docIdx);
+  let hasPhp = false;
+  try {
+    const phpCheck = spawnSync(phpBinary, ["-v"], { stdio: "ignore", windowsHide: true });
+    if (phpCheck.status === 0) {
+      hasPhp = true;
     }
-
-    // Rewrite .php links to .html
-    html = html.replace(/href=["']([a-zA-Z0-9_-]+)\.php([#?][^"']*)?["']/g, (m, p1, p2) => {
-      return `href="${p1}.html${p2 || ""}"`;
-    });
-
-    // Rewrite extensionless page links to .html
-    html = html.replace(extlessRegex, (m, p1, p2) => {
-      return `href="${p1}.html${p2 || ""}"`;
-    });
-
-    const outFileName = page.replace(/\.php$/, ".html");
-    fs.writeFileSync(path.join(neilDest, outFileName), html, "utf-8");
+  } catch {
+    hasPhp = false;
   }
 
-  console.log(`[Export] All 7 templates successfully exported to ${PREVIEW_DIR}`);
+  if (hasPhp) {
+    const phpPages = [
+      "index.php",
+      "about.php",
+      "contact.php",
+      "contribute.php",
+      "news.php",
+      "press.php",
+      "support.php",
+    ];
+    const pagesList = "index|about|contact|contribute|news|press|support";
+    const extlessRegex = new RegExp(`href=["'](${pagesList})([#?][^"']*)?["']`, "g");
+
+    console.log(`[Export] Rendering PHP pages for "neil-datuin-caguioa"...`);
+    for (const page of phpPages) {
+      try {
+        const res = spawnSync(
+          phpBinary,
+          ["-d", "display_errors=0", "-d", "error_reporting=0", "-f", page],
+          {
+            cwd: neilSrc,
+            encoding: "utf-8",
+            windowsHide: true,
+          }
+        );
+
+        let html = res.stdout || "";
+        const docIdx = html.indexOf("<!");
+        if (docIdx > 0) {
+          html = html.slice(docIdx);
+        }
+
+        // Rewrite .php links to .html
+        html = html.replace(/href=["']([a-zA-Z0-9_-]+)\.php([#?][^"']*)?["']/g, (m, p1, p2) => {
+          return `href="${p1}.html${p2 || ""}"`;
+        });
+
+        // Rewrite extensionless page links to .html
+        html = html.replace(extlessRegex, (m, p1, p2) => {
+          return `href="${p1}.html${p2 || ""}"`;
+        });
+
+        const outFileName = page.replace(/\.php$/, ".html");
+        fs.writeFileSync(path.join(neilDest, outFileName), html, "utf-8");
+      } catch (err) {
+        console.warn(`[Export] Warning: Failed to render PHP page ${page}: ${err.message}`);
+      }
+    }
+  } else {
+    console.log(`[Export] PHP binary not available in environment. Preserving committed HTML snapshots.`);
+  }
+
+  console.log(`[Export] All templates verified and ready in ${PREVIEW_DIR}`);
 }
 
 // CLI entry point

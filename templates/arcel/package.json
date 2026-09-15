@@ -1,0 +1,18 @@
+{
+  "name": "pkmkpi-federation-site",
+  "version": "1.0.0",
+  "description": "PKMKPI Federation - national institutional website (frontend only, Tailwind CSS + Node static server).",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/input.css -o ./public/dist/output.css --minify",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./public/dist/output.css --watch",
+    "start": "node server.js",
+    "dev": "npm run build:css && node server.js"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.3"
+  }
+}

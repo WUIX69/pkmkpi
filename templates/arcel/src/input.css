@@ -1,0 +1,270 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-scale: 1;
+
+    /* =====================================================
+       LIGHT THEME (default)
+       Values are "R G B" triples so Tailwind's
+       rgb(var(--x) / <alpha-value>) opacity syntax works.
+       ===================================================== */
+    --canvas-rgb: 255 255 255;          /* #FFFFFF */
+    --canvas-subtle-rgb: 248 250 252;   /* #F8FAFC */
+    --surface-soft-rgb: 241 245 249;    /* #F1F5F9 */
+
+    --primary-rgb: 6 51 60;             /* #06333C  Deep Petrol */
+    --primary-dark-rgb: 4 36 43;        /* #04242B */
+    --primary-light-rgb: 14 74 86;      /* #0E4A56 */
+
+    --heading-rgb: 6 51 60;             /* headings = Deep Petrol on light canvas */
+    --eyebrow-rgb: 235 169 47;          /* eyebrows = Marigold Gold on light canvas */
+
+    --ink-rgb: 51 51 51;                /* #333333 */
+    --ink-light-rgb: 75 75 75;          /* #4B4B4B */
+    --ink-muted-rgb: 107 114 128;       /* #6B7280 */
+
+    --hairline-rgb: 226 232 240;        /* #E2E8F0 */
+    --hairline-strong-rgb: 203 213 225; /* #CBD5E1 */
+
+    --nav-bg-rgb: 255 255 255;
+  }
+
+  /* =====================================================
+     DARK THEME
+     Deep, near-black petrol-green canvas with High-Lime
+     headings and soft light-green body copy — matches the
+     PKMKPI V2 dark mode reference.
+     ===================================================== */
+  html.dark {
+    --canvas-rgb: 7 22 16;              /* #071610 */
+    --canvas-subtle-rgb: 11 30 22;      /* #0B1E16 */
+    --surface-soft-rgb: 15 39 29;       /* #0F271D */
+
+    --primary-rgb: 8 47 55;             /* slightly lifted petrol so it still reads on near-black */
+    --primary-dark-rgb: 4 18 13;        /* #04120D */
+    --primary-light-rgb: 21 61 46;      /* #153D2E */
+
+    --heading-rgb: 184 242 100;         /* #B8F264 High-Lime */
+    --eyebrow-rgb: 184 242 100;         /* #B8F264 High-Lime */
+
+    --ink-rgb: 214 227 219;             /* #D6E3DB soft light green-white */
+    --ink-light-rgb: 195 212 202;       /* #C3D4CA */
+    --ink-muted-rgb: 148 173 160;       /* #94ADA0 */
+
+    --hairline-rgb: 27 58 45;           /* #1B3A2D */
+    --hairline-strong-rgb: 42 76 59;    /* #2A4C3B */
+
+    --nav-bg-rgb: 6 20 15;              /* #06140F */
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+
+  html, body {
+    max-width: 100vw;
+    overflow-x: clip;
+    position: relative;
+  }
+
+  body {
+    font-family: theme("fontFamily.display");
+    background-color: rgb(var(--canvas-rgb));
+    color: rgb(var(--ink-rgb));
+    font-size: calc(1rem * var(--font-scale));
+    transition: background-color 0.35s ease, color 0.35s ease;
+  }
+
+  ::selection {
+    background-color: theme("colors.accent-gold-light");
+    color: #06333C;
+  }
+
+  :focus-visible {
+    outline: 3px solid theme("colors.accent-gold");
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .section-x {
+    @apply mx-auto w-full max-w-[1280px] px-5 sm:px-8 lg:px-10;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xs px-7 h-[46px] text-btn uppercase transition-[transform,box-shadow,background-color,color] duration-200 ease-out;
+  }
+
+  /* Fresh-Lime pill CTA with Deep-Petrol text — matches the 5.92:1 AAA-large pairing */
+  .btn-primary {
+    @apply btn bg-accent-green text-primary-dark hover:bg-accent-green-bright active:translate-y-px;
+  }
+
+  .region-filter-btn {
+    @apply px-4 py-2 rounded-full text-body-sm font-semibold border border-hairline text-ink-muted transition-colors;
+  }
+  .region-filter-btn:hover {
+    @apply border-heading text-heading;
+  }
+  .region-filter-btn.is-active {
+    @apply bg-heading text-primary-dark border-heading;
+  }
+
+  .btn-outline {
+    @apply btn bg-transparent text-heading border border-heading hover:bg-heading hover:text-primary-dark;
+  }
+
+  .btn-gold {
+    @apply btn bg-accent-gold text-primary-dark hover:bg-accent-gold-light;
+  }
+
+  .card-tilt-3d {
+    transform-style: preserve-3d;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+    will-change: transform;
+  }
+
+  .card-hover-lift {
+    @apply transition-[transform,box-shadow,border-color] duration-500 ease-spring;
+  }
+  .card-hover-lift:hover {
+    @apply -translate-y-2 border-accent-gold shadow-lift;
+  }
+  html.dark .card-hover-lift:hover {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.45), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Theme toggle pill (top utility bar) */
+  .theme-toggle-btn {
+    @apply flex items-center gap-1.5 text-caption uppercase tracking-wide text-white/80 hover:text-accent-green-bright transition-colors;
+  }
+
+  /* Tier 3 scroll reveal */
+  .sr-item {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .sr-left {
+    opacity: 0;
+    transform: translateX(-32px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .sr-right {
+    opacity: 0;
+    transform: translateX(32px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .sr-scale {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .sr-visible {
+    opacity: 1 !important;
+    transform: translate(0, 0) scale(1);
+  }
+  .delay-80 { transition-delay: 60ms; }
+  .delay-160 { transition-delay: 160ms; }
+  .delay-240 { transition-delay: 240ms; }
+  .delay-320 { transition-delay: 320ms; }
+  .delay-400 { transition-delay: 400ms; }
+}
+
+/* Tier 4: reduced motion / accessibility overrides */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+    transform: none !important;
+  }
+  .card-tilt-3d, .card-hover-lift {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}
+
+body.animations-paused *,
+body.animations-paused *::before,
+body.animations-paused *::after {
+  animation: none !important;
+  transition: none !important;
+  transform: none !important;
+}
+
+/* AAA High-Contrast Mode — overrides light/dark theme entirely */
+body.high-contrast {
+  background: #000000 !important;
+  color: #FFFFFF !important;
+}
+body.high-contrast .hc-surface {
+  background: #0B0F19 !important;
+  border: 2px solid #FACC15 !important;
+  color: #FFFFFF !important;
+}
+body.high-contrast .hc-link,
+body.high-contrast a {
+  color: #00FFFF !important;
+}
+body.high-contrast .btn-primary,
+body.high-contrast .btn-gold {
+  background: #4ADE80 !important;
+  color: #000000 !important;
+}
+body.high-contrast section,
+body.high-contrast header,
+body.high-contrast footer,
+body.high-contrast .site-topbar {
+  background: #000000 !important;
+  color: #FFFFFF !important;
+  border-color: #FACC15 !important;
+}
+body.high-contrast p,
+body.high-contrast span,
+body.high-contrast h1,
+body.high-contrast h2,
+body.high-contrast h3 {
+  color: inherit !important;
+}
+body.high-contrast a {
+  text-decoration: underline;
+}
+body.high-contrast .btn-outline,
+body.high-contrast .region-filter-btn.is-active {
+  background: #4ADE80 !important;
+  color: #000000 !important;
+  border-color: #FACC15 !important;
+}
+body.high-contrast .region-filter-btn {
+  background: transparent !important;
+  color: #FFFFFF !important;
+  border-color: #FACC15 !important;
+}
+body.high-contrast .theme-toggle-btn {
+  color: #FFD700 !important;
+}
+
+/* Dyslexia-friendly mode */
+body.dyslexia-font,
+body.dyslexia-font * {
+  font-family: "Comic Sans MS", "Lexend", sans-serif !important;
+  letter-spacing: 0.06em !important;
+  word-spacing: 0.12em !important;
+  line-height: 1.85 !important;
+}
+
+/* Speech synthesis reading highlight */
+.tts-active {
+  outline: 3px solid theme("colors.accent-gold");
+  outline-offset: 4px;
+  border-radius: 4px;
+}
