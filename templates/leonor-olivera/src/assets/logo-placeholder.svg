@@ -1,0 +1,35 @@
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+  <circle cx="60" cy="60" r="57" fill="#163B2E" stroke="#D4A017" stroke-width="4" />
+  <g stroke="#D4A017" stroke-width="2.5" stroke-linecap="round">
+    <line x1="60" y1="8" x2="60" y2="19" />
+    <line x1="60" y1="101" x2="60" y2="112" />
+    <line x1="8" y1="60" x2="19" y2="60" />
+    <line x1="101" y1="60" x2="112" y2="60" />
+    <line x1="22" y1="22" x2="30" y2="30" />
+    <line x1="90" y1="90" x2="98" y2="98" />
+    <line x1="98" y1="22" x2="90" y2="30" />
+    <line x1="30" y1="90" x2="22" y2="98" />
+  </g>
+  <text
+    x="60"
+    y="58"
+    text-anchor="middle"
+    font-family="Georgia, serif"
+    font-size="22"
+    font-weight="700"
+    fill="#ffffff"
+  >
+    PK
+  </text>
+  <text
+    x="60"
+    y="76"
+    text-anchor="middle"
+    font-family="Arial, sans-serif"
+    font-size="9"
+    letter-spacing="1.5"
+    fill="#D4A017"
+  >
+    MKPI
+  </text>
+</svg>

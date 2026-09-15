@@ -1,0 +1,745 @@
+@import "tailwindcss";
+
+@plugin "daisyui" {
+  themes: pkmkpi --default, pkmkpi-dark;
+}
+
+@plugin "daisyui/theme" {
+  name: "pkmkpi";
+  default: true;
+  color-scheme: light;
+
+  /* Predominantly-green palette — white / very light green surfaces,
+     deep green as the dominant brand color, medium green for secondary
+     actions, a lighter accent green for CTA pop. Gold/orange is reserved
+     for the PKMKPI logo mark only and is no longer part of the site theme. */
+  --color-base-100: #ffffff;
+  --color-base-200: #f1f8f4;
+  --color-base-300: #e8f5e9;
+  --color-base-content: #1f2937;
+
+  --color-primary: #1b5e20;
+  --color-primary-content: #ffffff;
+
+  --color-secondary: #2e7d32;
+  --color-secondary-content: #ffffff;
+
+  --color-accent: #66bb6a;
+  --color-accent-content: #12321a;
+
+  --color-neutral: #14532d;
+  --color-neutral-content: #ffffff;
+
+  --color-info: #2563eb;
+  --color-info-content: #ffffff;
+  --color-success: #16a34a;
+  --color-success-content: #ffffff;
+  --color-warning: #d97706;
+  --color-warning-content: #ffffff;
+  --color-error: #dc2626;
+  --color-error-content: #ffffff;
+
+  --radius-selector: 0.75rem;
+  --radius-field: 0.65rem;
+  --radius-box: 1.25rem;
+
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+/* Dark theme — same green-dominant brand palette, dark green-tinted
+   surfaces instead of the light mint/white ones above. Semantic roles
+   (primary/secondary/accent/base-*) are unchanged from the light theme,
+   so every existing `bg-base-100`, `text-primary`, `text-secondary`,
+   `text-accent`, etc. utility across the whole site automatically
+   repaints correctly — no component markup needed to change. */
+@plugin "daisyui/theme" {
+  name: "pkmkpi-dark";
+  default: false;
+  color-scheme: dark;
+
+  --color-base-100: #0a1710;
+  --color-base-200: #0f2117;
+  --color-base-300: #1a3327;
+  --color-base-content: #eaf3ec;
+
+  --color-primary: #a5d6a7;
+  --color-primary-content: #0b2a12;
+
+  --color-secondary: #4caf50;
+  --color-secondary-content: #06170f;
+
+  --color-accent: #81c784;
+  --color-accent-content: #0f2716;
+
+  --color-neutral: #eaf3ec;
+  --color-neutral-content: #0a1710;
+
+  --color-info: #60a5fa;
+  --color-info-content: #061224;
+  --color-success: #34d399;
+  --color-success-content: #06170f;
+  --color-warning: #f2b84b;
+  --color-warning-content: #1a1405;
+  --color-error: #f87171;
+  --color-error-content: #200606;
+
+  --radius-selector: 0.75rem;
+  --radius-field: 0.65rem;
+  --radius-box: 1.25rem;
+
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@theme {
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-sans: "Inter", "Segoe UI", sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  /* Smooth, short color-scheme transition when toggling light/dark.
+     Scoped to color-related properties only — never size, position, or
+     layout properties — so switching themes can never shift the page. */
+  body,
+  header,
+  nav,
+  section,
+  footer,
+  main,
+  div,
+  a,
+  button,
+  input,
+  textarea,
+  img {
+    transition: background-color 0.25s ease-out, border-color 0.25s ease-out,
+      color 0.25s ease-out, box-shadow 0.25s ease-out;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+  }
+
+  /* Strong, visible focus states matter a lot for this audience. */
+  a:focus-visible,
+  button:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+/* Scroll-reveal: elements fade/rise into place once, the first time
+   they cross into the viewport. Respects prefers-reduced-motion. */
+@layer components {
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Hero image: gentle entrance (fade + rise + slight scale-in) and a
+     barely-there hover lift. Kept separate from .reveal so it can use
+     its own timing/scale without affecting other reveal blocks. */
+  .hero-image-anim {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.4s ease-out;
+  }
+
+  .hero-image-anim.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .hero-image-anim.is-visible:hover {
+    transform: scale(1.015);
+    box-shadow: 0 25px 50px -12px rgba(10, 37, 64, 0.35);
+    transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+  }
+
+  /* Soft wipe mask that sits over the image and clears just after the
+     image starts fading in — a subtle "reveal" rather than the image
+     simply appearing. */
+  .hero-image-mask {
+    transform: scaleX(1);
+    transform-origin: right;
+    transition: transform 0.65s cubic-bezier(0.65, 0, 0.35, 1) 0.05s;
+  }
+
+  .hero-image-mask.is-visible {
+    transform: scaleX(0);
+  }
+
+  /* Thin accent line that fades/extends in just after the image settles. */
+  .hero-image-accent {
+    opacity: 0;
+    transform: scaleX(0.8);
+    transform-origin: left;
+    transition: opacity 0.6s ease-out 0.55s, transform 0.6s ease-out 0.55s;
+  }
+
+  .hero-image-accent.is-visible {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
+  /* Community Solidarity image: gentle one-time fade/rise/scale-in as the
+     section enters the viewport, plus a barely-there hover lift. Kept
+     separate from .reveal so it can use its own scale timing. */
+  .solidarity-image-anim {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .solidarity-image-anim.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .solidarity-image-anim.is-visible:hover {
+    transform: scale(1.01);
+    transition: transform 0.35s ease-out;
+  }
+
+  /* About section image: one-time fade/rise/scale-in as the section enters
+     the viewport, plus a barely-there hover lift. */
+  .about-image-anim {
+    opacity: 0;
+    transform: translateY(25px) scale(0.98);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .about-image-anim.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .about-image-anim.is-visible:hover {
+    transform: scale(1.01);
+    transition: transform 0.35s ease-out;
+  }
+
+  /* About PKMKPI section (home page preview): each text element (label,
+     heading, paragraph, info card, button) fades in and rises into place
+     one at a time — a "landing" effect. All are driven by ONE shared
+     IntersectionObserver on the section (see useScrollReveal in
+     AboutPreview.jsx); the stagger itself comes from a per-element
+     transitionDelay set inline, not from separate observers, so they
+     all trigger together and only ever play once. */
+  .about-reveal-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .about-reveal-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Image collage: much subtler than the text — a gentle fade + scale
+     with no vertical movement, so it settles quietly alongside the
+     staggered text rather than competing with it. */
+  .about-gallery-reveal {
+    opacity: 0;
+    transform: scale(0.98);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .about-gallery-reveal.is-visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Team card reveal: simple fade + slight rise + scale-in as each card
+     enters the viewport, staggered via transition-delay set inline per
+     card. Plus a subtle hover lift and gentle image zoom on desktop.
+     Scoped to .team-card-anim so it never touches the generic .reveal
+     used elsewhere. */
+  .team-card-anim {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform;
+  }
+
+  .team-card-anim.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .team-card-anim.is-visible:hover,
+  .team-card-anim.is-visible:focus-within {
+    transform: translateY(-7px) scale(1);
+    box-shadow: 0 14px 26px -12px rgba(13, 27, 50, 0.2);
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  }
+
+  .team-card-photo-wrap {
+    overflow: hidden;
+    transition: box-shadow 0.3s ease-out, border-color 0.3s ease-out;
+  }
+
+  .team-card-anim.is-visible:hover .team-card-photo-wrap,
+  .team-card-anim.is-visible:focus-within .team-card-photo-wrap {
+    border-color: rgba(46, 125, 50, 0.55);
+    box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.16);
+  }
+
+  .team-card-photo {
+    transition: transform 0.3s ease-out;
+  }
+
+  .team-card-anim.is-visible:hover .team-card-photo,
+  .team-card-anim.is-visible:focus-within .team-card-photo {
+    transform: scale(1.05);
+  }
+
+  /* Very subtle readability overlay on the photo, on hover only. */
+  .team-card-photo-overlay {
+    opacity: 0;
+    background: linear-gradient(to top, rgba(10, 30, 20, 0.16), rgba(10, 30, 20, 0) 55%);
+    transition: opacity 0.3s ease-out;
+    pointer-events: none;
+  }
+
+  .team-card-anim.is-visible:hover .team-card-photo-overlay,
+  .team-card-anim.is-visible:focus-within .team-card-photo-overlay {
+    opacity: 1;
+  }
+}
+
+/* Page transition: brief fade + slight upward move whenever a route
+   mounts. Class is toggled one frame after mount (see PageTransition.jsx)
+   so the browser paints the "before" state first. Kept to opacity +
+   transform only — no layout properties — so it never delays the page
+   from being interactive or scrollable. */
+@layer components {
+  .page-transition {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+
+  .page-transition.is-entered {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-transition {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+html.a11y-motion-paused .page-transition {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Team card hover polish: brand accent + name emphasis + a gentle
+   "focus" recede on sibling cards. Written OUTSIDE @layer so these rules
+   reliably win over the Tailwind utilities already on the same elements
+   (text-primary, border-base-300) without needing !important or touching
+   those utility classes. Card lift/zoom stays defined above; this only
+   adds the accent + name-color + sibling-dim on top of it.
+
+   Accent color is theme-scoped: medium green in light mode, a lighter
+   green in dark mode — consistent with the green-dominant theme used
+   everywhere else on the site. */
+.team-card-anim.is-visible:hover,
+.team-card-anim.is-visible:focus-within {
+  border-color: rgba(46, 125, 50, 0.45);
+  box-shadow: 0 14px 26px -12px rgba(13, 27, 50, 0.24), 0 0 0 1px rgba(46, 125, 50, 0.32);
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, border-color 0.3s ease-out;
+}
+
+.team-card-name {
+  transition: color 0.3s ease-out;
+}
+
+.team-card-anim.is-visible:hover .team-card-name,
+.team-card-anim.is-visible:focus-within .team-card-name {
+  color: #2e7d32;
+}
+
+[data-theme="pkmkpi-dark"] .team-card-anim.is-visible:hover,
+[data-theme="pkmkpi-dark"] .team-card-anim.is-visible:focus-within {
+  border-color: rgba(129, 199, 132, 0.5);
+  box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(129, 199, 132, 0.38);
+}
+
+[data-theme="pkmkpi-dark"] .team-card-anim.is-visible:hover .team-card-name,
+[data-theme="pkmkpi-dark"] .team-card-anim.is-visible:focus-within .team-card-name {
+  color: #81c784;
+}
+
+/* When one card is hovered/focused, the rest recede slightly — never
+   hidden, never blurred, text stays fully readable. Progressive
+   enhancement: browsers without :has() simply skip this, no loss of
+   function. */
+@supports selector(:has(*)) {
+  .team-grid:has(.team-card-anim.is-visible:hover)
+    .team-card-anim.is-visible:not(:hover):not(:focus-within),
+  .team-grid:has(.team-card-anim.is-visible:focus-within)
+    .team-card-anim.is-visible:not(:hover):not(:focus-within) {
+    opacity: 0.85;
+    transition: opacity 0.3s ease-out;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .hero-image-anim {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .hero-image-mask {
+    opacity: 0 !important;
+    transform: scaleX(0) !important;
+    transition: none !important;
+  }
+
+  .hero-image-accent {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .solidarity-image-anim {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .solidarity-image-anim.is-visible:hover {
+    transform: none !important;
+  }
+
+  .about-image-anim {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .about-image-anim.is-visible:hover {
+    transform: none !important;
+  }
+
+  .about-reveal-item {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .about-gallery-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .team-card-anim {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .team-card-anim.is-visible:hover,
+  .team-card-anim.is-visible:focus-within {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  .team-card-anim.is-visible:hover .team-card-photo,
+  .team-card-anim.is-visible:focus-within .team-card-photo {
+    transform: none !important;
+  }
+
+  .team-card-anim.is-visible:hover .team-card-photo-wrap,
+  .team-card-anim.is-visible:focus-within .team-card-photo-wrap {
+    box-shadow: none !important;
+  }
+
+  .team-card-photo-overlay {
+    transition: none !important;
+  }
+
+  .team-card-anim.is-visible:hover .team-card-photo-overlay,
+  .team-card-anim.is-visible:focus-within .team-card-photo-overlay {
+    opacity: 0 !important;
+  }
+
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Accessibility panel modes — toggled via classes on <html>. */
+html.a11y-motion-paused {
+  scroll-behavior: auto;
+}
+
+html.a11y-motion-paused .reveal {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+html.a11y-motion-paused .hero-image-anim {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+html.a11y-motion-paused .hero-image-mask {
+  opacity: 0 !important;
+  transform: scaleX(0) !important;
+  transition: none !important;
+}
+
+html.a11y-motion-paused .hero-image-accent {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+html.a11y-motion-paused .solidarity-image-anim {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+html.a11y-motion-paused .solidarity-image-anim.is-visible:hover {
+  transform: none !important;
+}
+
+html.a11y-motion-paused .about-image-anim {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+html.a11y-motion-paused .about-image-anim.is-visible:hover {
+  transform: none !important;
+}
+
+html.a11y-motion-paused .about-reveal-item {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+html.a11y-motion-paused .about-gallery-reveal {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+html.a11y-motion-paused .team-card-anim {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+html.a11y-motion-paused .team-card-anim.is-visible:hover,
+html.a11y-motion-paused .team-card-anim.is-visible:focus-within {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+html.a11y-motion-paused .team-card-anim.is-visible:hover .team-card-photo,
+html.a11y-motion-paused .team-card-anim.is-visible:focus-within .team-card-photo {
+  transform: none !important;
+}
+
+html.a11y-motion-paused .team-card-anim.is-visible:hover .team-card-photo-wrap,
+html.a11y-motion-paused .team-card-anim.is-visible:focus-within .team-card-photo-wrap {
+  box-shadow: none !important;
+}
+
+html.a11y-motion-paused .team-card-photo-overlay,
+html.a11y-motion-paused .team-card-anim.is-visible:hover .team-card-photo-overlay,
+html.a11y-motion-paused .team-card-anim.is-visible:focus-within .team-card-photo-overlay {
+  opacity: 0 !important;
+}
+
+html.a11y-motion-paused * {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}
+
+html.a11y-dyslexia body,
+html.a11y-dyslexia h1,
+html.a11y-dyslexia h2,
+html.a11y-dyslexia h3,
+html.a11y-dyslexia h4,
+html.a11y-dyslexia h5,
+html.a11y-dyslexia h6 {
+  font-family: "Comic Sans MS", "Comic Sans", "Verdana", sans-serif;
+  letter-spacing: 0.02em;
+  line-height: 1.7;
+}
+
+html.a11y-high-contrast {
+  filter: contrast(1.15);
+}
+
+html.a11y-high-contrast body {
+  background: #000000;
+  color: #ffffff;
+}
+
+html.a11y-high-contrast a,
+html.a11y-high-contrast button {
+  text-decoration: underline;
+}
+
+html.a11y-high-contrast .bg-base-100,
+html.a11y-high-contrast .bg-base-200 {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+html.a11y-high-contrast .border-base-300 {
+  border-color: #ffffff !important;
+}
+
+/* Extend high-contrast coverage to the remaining surfaces used across
+   the site (base-300 backgrounds, primary/secondary/accent-colored
+   sections, and form controls) so every page — not just base-100/200
+   sections — gets the same black-background / white-text / white-border
+   treatment. Semantic roles are preserved (e.g. accent text stays a
+   distinguishable yellow) so state and hierarchy remain readable. */
+html.a11y-high-contrast .bg-base-300,
+html.a11y-high-contrast .bg-primary,
+html.a11y-high-contrast .bg-secondary,
+html.a11y-high-contrast .bg-accent,
+html.a11y-high-contrast .bg-neutral {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+html.a11y-high-contrast .text-primary,
+html.a11y-high-contrast .text-secondary,
+html.a11y-high-contrast .text-primary-content,
+html.a11y-high-contrast .text-secondary-content,
+html.a11y-high-contrast .text-accent-content,
+html.a11y-high-contrast .text-base-content {
+  color: #ffffff !important;
+}
+
+html.a11y-high-contrast .text-accent {
+  color: #ffff00 !important;
+}
+
+html.a11y-high-contrast .border-primary,
+html.a11y-high-contrast .border-secondary,
+html.a11y-high-contrast .border-accent,
+html.a11y-high-contrast .border-primary\/10,
+html.a11y-high-contrast .border-primary\/15,
+html.a11y-high-contrast .border-secondary\/30,
+html.a11y-high-contrast .border-secondary\/40 {
+  border-color: #ffffff !important;
+}
+
+html.a11y-high-contrast .btn {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+}
+
+html.a11y-high-contrast .btn-primary,
+html.a11y-high-contrast .btn-secondary,
+html.a11y-high-contrast .btn-accent {
+  background-color: #ffff00 !important;
+  color: #000000 !important;
+  border-color: #000000 !important;
+}
+
+html.a11y-high-contrast .input,
+html.a11y-high-contrast .textarea,
+html.a11y-high-contrast select {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+}
+
+html.a11y-high-contrast .badge {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border: 1px solid #ffffff !important;
+}
+
+html.a11y-high-contrast [class*="shadow"] {
+  box-shadow: none !important;
+}
+
+/* Contrast fix: the "Organization at a Glance" fact labels sit on a
+   bg-primary panel whose meaning flips between themes (dark green in
+   light mode, light green in dark mode). The default text-accent color
+   is tuned for accent chips elsewhere and reads too close to this
+   particular background in both themes. Scoped to .org-fact-label only
+   (via the text-accent + org-fact-label combo) so no other text-accent
+   usage on the site is affected. High-contrast mode's !important rule
+   above still wins over this, so that behavior is unchanged. */
+.text-accent.org-fact-label {
+  color: #a5d6a7;
+}
+
+[data-theme="pkmkpi-dark"] .text-accent.org-fact-label {
+  color: #1b5e20;
+}
