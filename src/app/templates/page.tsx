@@ -1,10 +1,10 @@
 import Link from "next/link"
-import { ArrowLeft, ExternalLink, Eye, Server, Layers, ShieldCheck } from "lucide-react"
+import { ArrowLeft, ExternalLink, Eye, Server, Layers, ShieldCheck, Globe } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export const metadata = {
   title: "PKMKPI Federation Template Showcase",
-  description: "Browse and preview 7 multi-stack team submissions running in isolated sandboxes.",
+  description: "Browse and preview 7 multi-stack team submissions running in isolated sandboxes and Vercel static snapshots.",
 }
 
 interface TemplateMeta {
@@ -118,6 +118,10 @@ export default function TemplatesPage() {
               <ShieldCheck className="w-3.5 h-3.5" />
               100% Root Isolated
             </span>
+            <span className="hidden sm:inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/20">
+              <Globe className="w-3.5 h-3.5" />
+              Vercel Static Showcase
+            </span>
           </div>
         </div>
       </header>
@@ -135,7 +139,7 @@ export default function TemplatesPage() {
           <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
             All 7 team technical submissions preserved as autonomous reference templates under{" "}
             <code className="px-1.5 py-0.5 rounded bg-muted text-foreground text-sm">./templates/</code>.
-            Each runs in an isolated out-of-process runtime on dedicated ports, guaranteeing zero contamination to the root Next.js 16 application.
+            Supports dual-mode inspection: run locally in isolated out-of-process runtimes on dedicated ports (4001–4007), or preview instantly via static showcase snapshots deployed to Vercel with zero toolchain contamination to root Next.js 16.
           </p>
         </div>
 
@@ -146,9 +150,9 @@ export default function TemplatesPage() {
               <Server className="w-4 h-4" />
             </div>
             <div>
-              <p className="font-medium">Orchestrator Quick Start</p>
+              <p className="font-medium">Hybrid Preview: Local Daemons & Static Showcase</p>
               <p className="text-xs text-muted-foreground">
-                Run <code className="bg-muted px-1 py-0.5 rounded">pnpm templates:serve:all</code> to launch all 7 ports (4001–4007) concurrently.
+                Run <code className="bg-muted px-1 py-0.5 rounded">pnpm templates:serve:all</code> for live ports (4001–4007), or toggle to Static Snapshots for Vercel production hosting.
               </p>
             </div>
           </div>

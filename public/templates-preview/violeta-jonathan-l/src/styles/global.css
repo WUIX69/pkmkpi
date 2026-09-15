@@ -1,0 +1,61 @@
+/* PKMKPI V2 Design Tokens & Global Viewport Resets */
+:root {
+  --color-primary: #80BC2F;
+  --color-secondary: #06333C;
+  --color-accent-gold: #EBA92F;
+  --color-background: #FFFFFF;
+  --color-foreground: #333333;
+  --color-pure-white: #FFFFFF;
+  --color-high-lime: #B8F264;
+  --color-ocean-blue: #15768D;
+  --color-gray-bg: #F1F1F1;
+
+  --font-sans: 'Montserrat', sans-serif;
+  --font-script: 'Caveat', cursive;
+  --font-editorial: 'Merriweather', serif;
+
+  --font-scale: 1.0;
+  --spacing-base: 2px;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  width: 100% !important;
+  font-size: calc(15px * var(--font-scale));
+  line-height: 1.60;
+  position: relative;
+}
+
+section, header, footer, main {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  margin: 0;
+}
+
+/* Focus Rings for A11y */
+*:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.font-script {
+  font-family: var(--font-script);
+}
+
+.font-editorial {
+  font-family: var(--font-editorial);
+}

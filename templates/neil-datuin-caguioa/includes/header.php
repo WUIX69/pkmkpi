@@ -10,7 +10,7 @@ if (session_status() === PHP_SESSION_NONE) {
     ]);
 }
 
-header("X-Frame-Options: DENY");
+header("Content-Security-Policy: frame-ancestors 'self' http://localhost:* http://127.0.0.1:* https://*.vercel.app");
 header("X-XSS-Protection: 1; mode=block");
 header("X-Content-Type-Options: nosniff");
 ?>

@@ -15,6 +15,7 @@ const eslintConfig = defineConfig([
     "templates/**",
     ".agents/**",
     "design-extract-output/**",
+    "public/templates-preview/**",
   ]),
 ]);
 

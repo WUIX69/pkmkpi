@@ -75,6 +75,7 @@ graphify-out/.graphify_chunk_*.json
 /playwright/.auth/
 
 templates/**/node_modules
+templates/**/dist
 .slash_tmp/
 .templates-pids.json
 
