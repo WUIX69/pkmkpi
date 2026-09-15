@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Tungkol sa Amin — PKMKPI (Pambansang Kapisanan ng mga May Kapansanan ng Pilipinas, Inc.)</title>
+  <meta name="description" content="Tungkol sa PKMKPI: Ang nag-iisang Pambansang Pederasyon ng mga May Kapansanan sa Pilipinas. SEC Reg. No. CN202105447. Kilalanin ang aming kasaysayan, bisyon, misyon, at pamunuan.">
+
+  <!-- Google Fonts Preconnect & Stacks -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              lime: '#80BC2F',
+              'lime-hover': '#71A827',
+              highlime: '#B8F264',
+              petrol: '#06333C',
+              'petrol-dark': '#031D22',
+              'petrol-light': '#0A4A57',
+              gold: '#EBA92F',
+              'gold-hover': '#D99824',
+              charcoal: '#333333',
+              'charcoal-light': '#555555',
+              ocean: '#15768D',
+              canvas: '#FFFFFF',
+              subtle: '#F8FAFC',
+              graybg: '#F1F1F1'
+            }
+          },
+          fontFamily: {
+            sans: ['Montserrat', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            script: ['Caveat', 'cursive'],
+            serif: ['Merriweather', 'Georgia', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Modular Stylesheets -->
+  <link rel="stylesheet" href="src/styles/global.css?v=20260828w">
+  <link rel="stylesheet" href="src/styles/components.css?v=20260828w">
+  <link rel="stylesheet" href="src/styles/motion.css?v=20260828w">
+  <link rel="stylesheet" href="src/styles/accessibility.css?v=20260828w">
+</head>
+<body class="bg-brand-canvas text-brand-charcoal font-sans antialiased selection:bg-brand-lime selection:text-brand-petrol flex flex-col min-h-screen relative overflow-x-hidden">
+
+  <!-- Accessible Skip Link -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-brand-petrol focus:text-brand-lime focus:p-4 focus:rounded-xl focus:shadow-2xl focus:font-bold">
+    Skip to main content
+  </a>
+
+  <!-- Ambient Glow Layers (Clipped) -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden -z-10 w-full max-w-full" aria-hidden="true">
+    <div class="ambient-glow glow-primary w-96 h-96 top-0 -left-20"></div>
+    <div class="ambient-glow glow-secondary w-96 h-96 top-96 -right-20"></div>
+    <div class="ambient-glow glow-primary w-[500px] h-[500px] top-[2400px] left-1/4"></div>
+  </div>
+
+  <!-- 1. Top Announcement Bar (SEC CN202105447 & A11y Shortcut) -->
+  <div class="bg-brand-petrol-dark text-white text-xs py-2.5 px-4 border-b border-brand-petrol relative z-40">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+      <div class="flex items-center space-x-2 flex-wrap justify-center sm:justify-start">
+        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-black bg-brand-gold text-brand-petrol tracking-wider">
+          SEC REGISTERED
+        </span>
+        <span class="tracking-wide text-[11px] sm:text-xs text-gray-200">
+          SEC Reg. No. CN202105447 · 98 Major Marcos St., QC
+        </span>
+      </div>
+      <div class="flex items-center space-x-3 text-[11px] sm:text-xs font-medium text-gray-300 flex-wrap justify-center">
+        <a href="mailto:pkmkpi.pwd@gmail.com" class="hover:text-brand-lime transition-colors flex items-center space-x-1">
+          <svg class="w-3.5 h-3.5 text-brand-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          <span>pkmkpi.pwd@gmail.com</span>
+        </a>
+        <span class="text-gray-600">|</span>
+        <a href="index.html#regions" class="hover:text-white transition-colors">17 Regions</a>
+        <span class="text-gray-600">|</span>
+        <button type="button" onclick="document.getElementById('a11y-fab').click()" class="hover:text-brand-highlime transition-colors font-bold text-brand-lime">
+          ♿ Accessibility Suite (Alt+A)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Suspended Floating Island Navigation (Charity.org Style) -->
+  <header class="site-header">
+    <div class="floating-island-nav">
+      <!-- Brand Pill -->
+      <a href="index.html" class="flex items-center space-x-3 group flex-shrink-0" aria-label="PKMKPI Home">
+        <div class="w-10 h-10 rounded-full bg-brand-petrol border-2 border-brand-lime flex items-center justify-center overflow-hidden p-0.5 shadow-sm">
+          <img 
+            src="https://hercules-cdn.com/file_i4OBoUSEzlHLaDR5Aq9cATGe" 
+            alt="PKMKPI official seal" 
+            class="w-full h-full object-contain rounded-full"
+            loading="eager"
+          >
+        </div>
+        <div class="flex flex-col">
+          <span class="font-black text-base text-brand-petrol tracking-tight group-hover:text-brand-lime transition-colors brand-title">
+            PKMKPI
+          </span>
+          <span class="text-[9px] font-bold text-gray-500 tracking-wider uppercase -mt-1 hidden sm:block brand-subtitle">
+            National Federation
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden lg:flex items-center gap-6 text-xs font-bold text-brand-charcoal tracking-wide" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link active" aria-current="page">About Us</a>
+        <a href="index.html#aeiou" class="nav-link">AEIOU Pillars</a>
+        <a href="index.html#values" class="nav-link">Core Values</a>
+        <a href="index.html#regions" class="nav-link">17 Regions</a>
+        <a href="index.html#sectors" class="nav-link">Disability Guide</a>
+        <a href="index.html#support" class="nav-link">Support Us</a>
+        <a href="index.html#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Action Pill CTA -->
+      <div class="flex items-center space-x-3 flex-shrink-0">
+        <a href="index.html#contribute" class="btn-pill-primary text-xs uppercase tracking-wider py-2.5 px-6 shadow-md hover:scale-105 transition-transform">
+          Mag-Donate
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button 
+          id="mobile-menu-btn" 
+          type="button" 
+          class="lg:hidden p-2 rounded-full text-brand-petrol hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-brand-lime"
+          aria-expanded="false" 
+          aria-label="Toggle navigation menu"
+        >
+          <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="lg:hidden fixed inset-x-4 top-20 bg-brand-petrol text-white rounded-3xl p-6 shadow-2xl border border-brand-petrol-light hidden z-50">
+      <div class="flex flex-col space-y-4 text-center font-bold">
+        <a href="index.html" class="py-2.5 border-b border-brand-petrol-light hover:text-brand-lime">Home</a>
+        <a href="about.html" class="py-2.5 border-b border-brand-petrol-light text-brand-highlime font-black">About Us</a>
+        <a href="index.html#aeiou" class="py-2.5 border-b border-brand-petrol-light hover:text-brand-lime">AEIOU Pillars</a>
+        <a href="index.html#values" class="py-2.5 border-b border-brand-petrol-light hover:text-brand-lime">Core Values</a>
+        <a href="index.html#regions" class="py-2.5 border-b border-brand-petrol-light hover:text-brand-lime">17 Regions</a>
+        <a href="index.html#sectors" class="py-2.5 border-b border-brand-petrol-light hover:text-brand-lime">Disability Guide</a>
+        <a href="index.html#support" class="py-2.5 border-b border-brand-petrol-light hover:text-brand-lime">Support Us</a>
+        <a href="index.html#contact" class="py-2.5 border-b border-brand-petrol-light hover:text-brand-lime">Contact</a>
+        <a href="index.html#contribute" class="btn-pill-primary text-center py-3 mt-2">Mag-Donate Ngayon</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main id="main-content" class="flex-grow">
+
+    <!-- 1. Hero Section: Institutional Identity & Charter -->
+    <section class="relative section-hero-gradient text-white pt-36 sm:pt-44 pb-20 px-4 sm:px-6 overflow-hidden">
+      <!-- In-Section Floating Ambient Glow Orbs -->
+      <div class="ambient-glow glow-primary w-[450px] h-[450px] -top-32 -left-20" aria-hidden="true"></div>
+      <div class="ambient-glow glow-gold w-[400px] h-[400px] top-1/3 -right-24" aria-hidden="true"></div>
+
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+        
+        <!-- Hero Text Content -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left sr-item sr-left">
+          <div class="inline-flex items-center space-x-2 bg-brand-petrol-dark/90 border border-brand-lime/30 px-4 py-2 rounded-full shadow-inner">
+            <span class="w-2.5 h-2.5 rounded-full bg-brand-lime animate-pulse" aria-hidden="true"></span>
+            <span class="text-xs font-black text-brand-highlime uppercase tracking-wider">
+              Tungkol Sa Pederasyon · SEC CN202105447
+            </span>
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
+            Pambansang Kapisanan ng mga <span class="text-brand-highlime">May Kapansanan</span> ng Pilipinas, Inc.
+          </h1>
+
+          <p class="text-base sm:text-xl text-gray-200 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
+            Ang nag-iisang Pambansang Pederasyon ng mga May Kapansanan sa Pilipinas. Binubuo ng mga kasaping organisasyon mula sa lahat ng labimpitong (17) rehiyon sa buong bansa.
+          </p>
+
+          <!-- Badges / CTAs -->
+          <div class="pt-4 flex flex-wrap gap-4 justify-center lg:justify-start items-center">
+            <a href="#leadership" class="btn-pill-primary text-xs uppercase tracking-wider py-3.5 px-8 font-black shadow-lg">
+              Pambansang Pamunuan
+            </a>
+            <a href="index.html#contribute" class="btn-pill-secondary text-xs uppercase tracking-wider py-3.5 px-8 font-bold border-2 border-white text-white hover:bg-white hover:text-brand-petrol transition-all">
+              Sumuporta sa Adbokasiya
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero 3D Tilt Seal Card -->
+        <div class="lg:col-span-5 flex justify-center sr-item sr-right">
+          <div class="tilt-card bg-brand-petrol-dark/80 p-8 rounded-3xl border-2 border-brand-petrol-light shadow-2xl backdrop-blur-xl max-w-sm w-full text-center space-y-6 relative group">
+            <div class="w-32 h-32 mx-auto rounded-full bg-brand-petrol border-4 border-brand-lime p-2 shadow-xl flex items-center justify-center">
+              <img 
+                src="https://hercules-cdn.com/file_i4OBoUSEzlHLaDR5Aq9cATGe" 
+                alt="Opisyal na Selyo ng PKMKPI" 
+                class="w-full h-full object-contain rounded-full"
+                loading="eager"
+              >
+            </div>
+            <div class="space-y-2">
+              <span class="inline-block px-3 py-1 rounded-full text-[11px] font-black bg-brand-gold text-brand-petrol uppercase tracking-wider">
+                Official National Federation
+              </span>
+              <h2 class="text-xl font-black text-white">Nihil de nobis, sine nobis</h2>
+              <p class="text-xs text-gray-300 italic font-serif">
+                “Walang Kami Kung Hindi Kami · Nothing About Us Without Us”
+              </p>
+            </div>
+            <div class="pt-4 border-t border-brand-petrol-light text-left text-xs text-gray-300 space-y-1.5 font-medium">
+              <p><strong class="text-white">SEC Registration:</strong> CN202105447</p>
+              <p><strong class="text-white">Opisina:</strong> 98 Major Marcos St., Pasong Tamo, QC</p>
+              <p><strong class="text-white">Saklaw:</strong> 17 Rehiyon · 10 Kapansanan</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 2. Statistical Scope & Alliance Numbers -->
+    <section class="bg-brand-petrol-dark text-white py-10 px-4 border-y border-brand-petrol">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+        <div class="p-6 rounded-2xl bg-brand-petrol/60 border border-brand-petrol-light sr-item">
+          <div class="text-4xl sm:text-5xl font-black text-brand-highlime mb-1" data-counter="17">17</div>
+          <p class="text-xs sm:text-sm font-bold uppercase tracking-wider text-gray-300">Rehiyon sa Pilipinas</p>
+          <span class="text-[11px] text-gray-400">Luzon, Visayas, Mindanao & BARMM</span>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-brand-petrol/60 border border-brand-petrol-light sr-item">
+          <div class="text-4xl sm:text-5xl font-black text-brand-gold mb-1" data-counter="40">40+</div>
+          <p class="text-xs sm:text-sm font-bold uppercase tracking-wider text-gray-300">Corporate Member Organizations</p>
+          <span class="text-[11px] text-gray-400">Mga lokal na pederasyon at samahan</span>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-brand-petrol/60 border border-brand-petrol-light sr-item">
+          <div class="text-4xl sm:text-5xl font-black text-brand-lime mb-1" data-counter="10">10</div>
+          <p class="text-xs sm:text-sm font-bold uppercase tracking-wider text-gray-300">Uri ng Kapansanan</p>
+          <span class="text-[11px] text-gray-400">Harnessed PWD & PWRD sectors</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Organizational Story & Legal Identity -->
+    <section class="py-20 px-4 sm:px-6 bg-brand-canvas relative">
+      <div class="max-w-5xl mx-auto space-y-12">
+        
+        <div class="text-center space-y-4 max-w-3xl mx-auto sr-item">
+          <span class="text-xs font-black text-brand-ocean tracking-widest uppercase bg-brand-ocean/10 px-4 py-1.5 rounded-full">
+            Kasaysayan at Pagkakakilanlan
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-petrol">
+            Sino Kami at Kung Ano ang Aming Ipinaglalaban
+          </h2>
+          <p class="text-base text-gray-600 leading-relaxed">
+            Ang <strong class="text-brand-petrol">Pambansang Kapisanan ng mga May Kapansanan ng Pilipinas, Inc. (PKMKPI)</strong> ay isang non-stock, non-profit national organization ng mga Persons With Disability (PWD) at Persons with Work Related Disability (PWRD) sa sampung (10) uri ng kapansanan.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div class="space-y-6 text-sm text-gray-700 leading-relaxed sr-item sr-left">
+            <p>
+              Kami ay nagbubuklod bilang magkakaibigan at nagsasama bilang isang malaking pamilya na may paggalang sa kung sino, ano, paano, at nasaan ang bawat isa.
+            </p>
+            <p>
+              Rehistrado sa Securities and Exchange Commission sa ilalim ng <strong class="text-brand-petrol">SEC Reg. No. CN202105447</strong>, ang PKMKPI ang nag-iisang Pambansang Pederasyon (Kapisanan) ng mga May Kapansanan sa Pilipinas.
+            </p>
+            <p>
+              Ito ay isang alyansang binubuo ng apatnapung (40) corporate members — mga lokal na pederasyon at kapisanan — na sumasaklaw sa lahat ng labimpitong (17) rehiyon ng bansa.
+            </p>
+            <div class="p-5 rounded-2xl bg-brand-subtle border-l-4 border-brand-lime text-xs text-brand-charcoal space-y-1 font-medium">
+              <p class="font-bold text-brand-petrol">Pambansang Punong Tanggapan:</p>
+              <p>98 Major Marcos St., Area 2, Veterans Village, Pasong Tamo, Quezon City, Philippines</p>
+              <p class="text-brand-ocean">Email: pkmkpi.pwd@gmail.com</p>
+            </div>
+          </div>
+
+          <div class="sr-item sr-right">
+            <div class="tilt-card rounded-3xl overflow-hidden shadow-2xl border border-gray-100 bg-brand-petrol text-white p-8 relative">
+              <div class="space-y-4">
+                <span class="text-xs font-black text-brand-highlime uppercase tracking-widest">
+                  Aming Panata
+                </span>
+                <blockquote class="text-lg sm:text-xl font-serif italic leading-relaxed text-gray-100">
+                  “Walang Iwanan. Lahat ay Mahalaga. Isang Bansa, Isang Kapisanan, Isang Layunin tungo sa isang Makabuluhang Pilipinas.”
+                </blockquote>
+                <div class="pt-4 border-t border-brand-petrol-light flex items-center justify-between text-xs text-gray-300">
+                  <span>PKMKPI National Assembly</span>
+                  <span class="text-brand-gold font-bold">17 Regions Strong</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. Vision, Mission & Strategic Objectives (3-Pillar Cards) -->
+    <section class="py-20 px-4 sm:px-6 bg-brand-subtle border-t border-gray-100">
+      <div class="max-w-7xl mx-auto space-y-12">
+        <div class="text-center space-y-4 max-w-3xl mx-auto sr-item">
+          <span class="text-xs font-black text-brand-lime tracking-widest uppercase bg-brand-petrol text-brand-highlime px-4 py-1.5 rounded-full">
+            Gabay at Direksyon
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-petrol">
+            Bisyon, Misyon, at Layunin
+          </h2>
+          <p class="text-sm text-gray-600">
+            Ang tatlong pundasyon ng aming pagkilos para sa bawat mamamayang may kapansanan sa buong Pilipinas.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <!-- Vision Card -->
+          <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm card-hover-lift flex flex-col justify-between sr-item">
+            <div class="space-y-4">
+              <div class="w-14 h-14 rounded-2xl bg-brand-lime/20 text-brand-petrol flex items-center justify-center font-black text-2xl">
+                👁️
+              </div>
+              <h3 class="text-2xl font-black text-brand-petrol">Bisyon</h3>
+              <p class="text-sm text-gray-600 leading-relaxed">
+                Nais naming makita ang isang lipunan kung saan ang mga taong may kapansanan ay itinuturing nang may pagkakapantay-pantay, dignidad, at paggalang sa kanilang mga ipinapahayag na pagpipilian, at may pantay na pagkakataon na makilahok sa lipunan kung saan ang mga kakayahan, sa halip na mga kapansanan, ang kinikilala.
+              </p>
+            </div>
+            <div class="mt-8 pt-4 border-t border-gray-100 text-xs font-bold text-brand-lime uppercase tracking-wider">
+              Equality · Dignity · Recognition
+            </div>
+          </div>
+
+          <!-- Mission Card -->
+          <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm card-hover-lift flex flex-col justify-between sr-item">
+            <div class="space-y-4">
+              <div class="w-14 h-14 rounded-2xl bg-brand-gold/20 text-brand-petrol flex items-center justify-center font-black text-2xl">
+                ⚖️
+              </div>
+              <h3 class="text-2xl font-black text-brand-petrol">Misyon</h3>
+              <p class="text-sm text-gray-600 leading-relaxed">
+                Isulong at ipaglaban ang buong pagpapatupad ng mga batas para sa kapakanan ng mga may kapansanan (Disability Laws tulad ng RA 7277 Magna Carta, BP 344 Accessibility Law, at RA 10524 Employment Quota).
+              </p>
+            </div>
+            <div class="mt-8 pt-4 border-t border-gray-100 text-xs font-bold text-brand-gold uppercase tracking-wider">
+              Advocacy · Legal Implementation
+            </div>
+          </div>
+
+          <!-- Objective Card -->
+          <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm card-hover-lift flex flex-col justify-between sr-item">
+            <div class="space-y-4">
+              <div class="w-14 h-14 rounded-2xl bg-brand-ocean/20 text-brand-petrol flex items-center justify-center font-black text-2xl">
+                🎯
+              </div>
+              <h3 class="text-2xl font-black text-brand-petrol">Layunin</h3>
+              <p class="text-sm text-gray-600 leading-relaxed">
+                Makamit ang isang may kapangyarihan, may sariling kakayahan, at may sariling paninindigan na komunidad ng mga taong may kapansanan (Empowered, Self-Sufficient, and Self-Reliant PWDs).
+              </p>
+            </div>
+            <div class="mt-8 pt-4 border-t border-gray-100 text-xs font-bold text-brand-ocean uppercase tracking-wider">
+              Empowerment · Self-Reliance
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. AEIOU National Goals & 5 Core Values Matrix -->
+    <section class="py-20 px-4 sm:px-6 bg-brand-petrol text-white relative">
+      <div class="max-w-7xl mx-auto space-y-16">
+        
+        <!-- AEIOU Goals -->
+        <div class="space-y-8">
+          <div class="text-center space-y-3 max-w-3xl mx-auto sr-item">
+            <span class="text-xs font-black text-brand-highlime tracking-widest uppercase bg-brand-petrol-dark px-4 py-1.5 rounded-full border border-brand-petrol-light">
+              Pambansang Layunin
+            </span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+              Aming Mga Layunin: AEIOU
+            </h2>
+            <p class="text-sm text-gray-300">
+              Ang limang haligi na naglalarawan sa kamalayan, kapangyarihan, pakikilahok, kooperasyon, at pagkakaisa ng sektor ng PWD sa buong kapuluan.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            <div class="bg-brand-petrol-dark p-6 rounded-2xl border border-brand-petrol-light text-center space-y-2 card-hover-lift sr-item">
+              <div class="w-12 h-12 mx-auto rounded-full bg-brand-lime text-brand-petrol font-black text-xl flex items-center justify-center">A</div>
+              <h3 class="text-lg font-black text-white">Awareness</h3>
+              <p class="text-xs text-gray-300">Kamalayan sa karapatan at kakayahan ng PWD</p>
+            </div>
+
+            <div class="bg-brand-petrol-dark p-6 rounded-2xl border border-brand-petrol-light text-center space-y-2 card-hover-lift sr-item">
+              <div class="w-12 h-12 mx-auto rounded-full bg-brand-lime text-brand-petrol font-black text-xl flex items-center justify-center">E</div>
+              <h3 class="text-lg font-black text-white">Empowerment</h3>
+              <p class="text-xs text-gray-300">Pagbibigay-kapangyarihan sa sariling kabuhayan</p>
+            </div>
+
+            <div class="bg-brand-petrol-dark p-6 rounded-2xl border border-brand-petrol-light text-center space-y-2 card-hover-lift sr-item">
+              <div class="w-12 h-12 mx-auto rounded-full bg-brand-lime text-brand-petrol font-black text-xl flex items-center justify-center">I</div>
+              <h3 class="text-lg font-black text-white">Involvement</h3>
+              <p class="text-xs text-gray-300">Aktibong pakikibahagi sa pamamahala at lipunan</p>
+            </div>
+
+            <div class="bg-brand-petrol-dark p-6 rounded-2xl border border-brand-petrol-light text-center space-y-2 card-hover-lift sr-item">
+              <div class="w-12 h-12 mx-auto rounded-full bg-brand-lime text-brand-petrol font-black text-xl flex items-center justify-center">O</div>
+              <h3 class="text-lg font-black text-white">Cooperation</h3>
+              <p class="text-xs text-gray-300">Kooperasyon sa pamahalaan at pribadong sektor</p>
+            </div>
+
+            <div class="bg-brand-petrol-dark p-6 rounded-2xl border border-brand-petrol-light text-center space-y-2 card-hover-lift sr-item">
+              <div class="w-12 h-12 mx-auto rounded-full bg-brand-lime text-brand-petrol font-black text-xl flex items-center justify-center">U</div>
+              <h3 class="text-lg font-black text-white">Unity</h3>
+              <p class="text-xs text-gray-300">Pagkakaisa sa iisang tinig at adhikain</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 Core Values -->
+        <div class="pt-8 border-t border-brand-petrol-light space-y-8">
+          <div class="text-center space-y-3 max-w-3xl mx-auto sr-item">
+            <span class="text-xs font-black text-brand-gold tracking-widest uppercase bg-brand-petrol-dark px-4 py-1.5 rounded-full border border-brand-petrol-light">
+              Prinsipyo at Moralidad
+            </span>
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-white">
+              Aming Mga Pangunahing Pagpapahalaga (Core Values)
+            </h3>
+            <p class="text-xs sm:text-sm text-gray-300 font-serif italic">
+              “Maka-Panginoon, Maka-Bansa, Maka-Tao, Maka-Kalikasan, higit sa lahat, Maka-Kapansanan.”
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            <div class="bg-brand-petrol-dark/80 p-5 rounded-2xl border border-brand-petrol-light text-center card-hover-lift sr-item">
+              <span class="text-2xl mb-2 block">🙏</span>
+              <h4 class="font-extrabold text-white text-sm mb-1">Maka-Panginoon</h4>
+              <p class="text-[11px] text-gray-300">May takot at pananampalataya sa Diyos</p>
+            </div>
+
+            <div class="bg-brand-petrol-dark/80 p-5 rounded-2xl border border-brand-petrol-light text-center card-hover-lift sr-item">
+              <span class="text-2xl mb-2 block">🇵🇭</span>
+              <h4 class="font-extrabold text-white text-sm mb-1">Maka-Bansa</h4>
+              <p class="text-[11px] text-gray-300">Tapat at naglilingkod sa Inang Bayan</p>
+            </div>
+
+            <div class="bg-brand-petrol-dark/80 p-5 rounded-2xl border border-brand-petrol-light text-center card-hover-lift sr-item">
+              <span class="text-2xl mb-2 block">🤝</span>
+              <h4 class="font-extrabold text-white text-sm mb-1">Maka-Tao</h4>
+              <p class="text-[11px] text-gray-300">May paggalang sa dangal ng kapwa</p>
+            </div>
+
+            <div class="bg-brand-petrol-dark/80 p-5 rounded-2xl border border-brand-petrol-light text-center card-hover-lift sr-item">
+              <span class="text-2xl mb-2 block">🌱</span>
+              <h4 class="font-extrabold text-white text-sm mb-1">Maka-Kalikasan</h4>
+              <p class="text-[11px] text-gray-300">Nangangalaga sa kapaligiran</p>
+            </div>
+
+            <div class="bg-brand-petrol-dark/80 p-5 rounded-2xl border border-brand-petrol-light text-center card-hover-lift sr-item">
+              <span class="text-2xl mb-2 block">♿</span>
+              <h4 class="font-extrabold text-brand-highlime text-sm mb-1">Maka-Kapansanan</h4>
+              <p class="text-[11px] text-gray-300">Itinataguyod ang karapatan ng bawat PWD</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 6. National Leadership & Governance Directory (Interactive 3-Tier Grid) -->
+    <section id="leadership" class="py-20 px-4 sm:px-6 bg-brand-canvas relative">
+      <div class="max-w-7xl mx-auto space-y-12">
+        
+        <div class="text-center space-y-4 max-w-3xl mx-auto sr-item">
+          <span class="text-xs font-black text-brand-petrol tracking-widest uppercase bg-brand-lime px-4 py-1.5 rounded-full">
+            Pamunuan at Pamamahala
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-petrol">
+            Pambansang Pamunuan ng PKMKPI
+          </h2>
+          <p class="text-sm text-gray-600">
+            Ang mga pinuno ng Pambansang Pederasyon na naglilingkod mula sa iba't ibang rehiyon ng Pilipinas.
+          </p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="flex flex-wrap justify-center gap-2 sr-item">
+          <button type="button" data-leadership-filter="all" class="bg-brand-lime text-brand-petrol font-black text-xs px-5 py-2.5 rounded-full transition-all">
+            Lahat ng Pinuno (16)
+          </button>
+          <button type="button" data-leadership-filter="officers" class="bg-brand-petrol-dark text-gray-300 hover:text-white border border-brand-petrol-light font-bold text-xs px-5 py-2.5 rounded-full transition-all">
+            National Officers (7)
+          </button>
+          <button type="button" data-leadership-filter="trustees" class="bg-brand-petrol-dark text-gray-300 hover:text-white border border-brand-petrol-light font-bold text-xs px-5 py-2.5 rounded-full transition-all">
+            Board of Trustees (3)
+          </button>
+          <button type="button" data-leadership-filter="board" class="bg-brand-petrol-dark text-gray-300 hover:text-white border border-brand-petrol-light font-bold text-xs px-5 py-2.5 rounded-full transition-all">
+            Regional Board Members (6)
+          </button>
+        </div>
+
+        <!-- Leaders Grid -->
+        <div id="leadership-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- TIER 1: NATIONAL OFFICERS -->
+          
+          <!-- President -->
+          <div class="bg-white rounded-3xl p-6 border-2 border-brand-lime/30 shadow-md card-hover-lift flex flex-col justify-between relative overflow-hidden sr-item" data-leadership-card data-leadership-category="officers">
+            <div class="absolute top-0 right-0 bg-brand-lime text-brand-petrol text-[10px] font-black uppercase px-3 py-1 rounded-bl-xl tracking-wider">
+              President
+            </div>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-black bg-brand-ocean/10 text-brand-ocean tracking-wide" aria-label="National Capital Region">
+                  NCR
+                </span>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-brand-lime">
+                  Executive Officer
+                </span>
+              </div>
+              <h3 class="text-xl font-extrabold text-brand-petrol leading-snug mb-1">Fe V. Corpuz, D.D.</h3>
+              <p class="text-sm font-bold text-brand-charcoal">National President</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-400 font-medium">
+              <span>National Executive Council</span>
+              <span class="text-brand-gold font-bold">SEC CN202105447</span>
+            </div>
+          </div>
+
+          <!-- Vice President -->
+          <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm card-hover-lift flex flex-col justify-between sr-item" data-leadership-card data-leadership-category="officers">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-black bg-brand-ocean/10 text-brand-ocean tracking-wide" aria-label="Region 8 Eastern Visayas">
+                  RVIII
+                </span>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400">
+                  National Officer
+                </span>
+              </div>
+              <h3 class="text-xl font-extrabold text-brand-petrol leading-snug mb-1">Ferdinand F. Bello</h3>
+              <p class="text-sm font-bold text-gray-600">National Vice President</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-400">
+              <span>Eastern Visayas Chapter</span>
+              <span class="text-brand-petrol font-bold">Executive</span>
+            </div>
+          </div>
+
+          <!-- Secretary -->
+          <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm card-hover-lift flex flex-col justify-between sr-item" data-leadership-card data-leadership-category="officers">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-black bg-brand-ocean/10 text-brand-ocean tracking-wide" aria-label="Region 4-B MIMAROPA">
+                  RIV-B
+                </span>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400">
+                  National Officer
+                </span>
+              </div>
+              <h3 class="text-xl font-extrabold text-brand-petrol leading-snug mb-1">Leilani I. Servas</h3>
+              <p class="text-sm font-bold text-gray-600">National Secretary</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-400">
+              <span>MIMAROPA Chapter</span>
+              <span class="text-brand-petrol font-bold">Executive</span>
+            </div>
+          </div>
+
+          <!-- Treasurer -->
+          <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm card-hover-lift flex flex-col justify-between sr-item" data-leadership-card data-leadership-category="officers">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-black bg-brand-ocean/10 text-brand-ocean tracking-wide" aria-label="National Capital Region">
+                  NCR
+                </span>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400">
+                  National Officer
+                </span>
+              </div>
+              <h3 class="text-xl font-extrabold text-brand-petrol leading-snug mb-1">Neil C. Pena</h3>
+              <p class="text-sm font-bold text-gray-600">National Treasurer</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-400">
+              <span>Metro Manila Chapter</span>
+              <span class="text-brand-petrol font-bold">Executive</span>
+            </div>
+          </div>
+
+          <!-- Auditor -->
+          <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm card-hover-lift flex flex-col justify-between sr-item" data-leadership-card data-leadership-category="officers">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-black bg-brand-ocean/10 text-brand-ocean tracking-wide" aria-label="Region 4-A CALABARZON">
+                  RIV-A
+                </span>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400">
+                  National Officer
+                </span>
+              </div>
+              <h3 class="text-xl font-extrabold text-brand-petrol leading-snug mb-1">Homer L. Alcover</h3>
+              <p class="text-sm font-bold text-gray-600">National Auditor</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-400">
+              <span>CALABARZON Chapter</span>
+              <span class="text-brand-petrol font-bold">Executive</span>
+            </div>
+          </div>
+
+          <!-- PIO -->
+          <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm card-hover-lift flex flex-col justify-between sr-item" data-leadership-card data-leadership-category="officers">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-black bg-brand-ocean/10 text-brand-ocean tracking-wide" aria-label="Region 3 Central Luzon">
+                  RIII
+                </span>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400">
+                  National Officer
+                </span>
+              </div>
+              <h3 class="text-xl font-extrabold text-brand-petrol leading-snug mb-1">Nelson P. Balmores</h3>
+              <p class="text-sm font-bold text-gray-600">National PIO (Public Information Officer)</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-400">
+              <span>Central Luzon Chapter</span>
+              <span class="text-brand-petrol font-bold">Executive</span>
+            </div>
+          </div>
+
+          <!-- Executive Secretary -->
+          <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm card-hover-lift flex flex-col justify-between sr-item" data-leadership-card data-leadership-category="officers">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-black bg-brand-ocean/10 text-brand-ocean tracking-wide" aria-label="National Capital Region">
+                  NCR
+                </span>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400">
+                  National Officer
+                </span>
+              </div>
+              <h3 class="text-xl font-extrabold text-brand-petrol leading-snug mb-1">Kristel G. Manzano</h3>
+              <p class="text-sm font-bold text-gray-600">National Executive Secretary</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-400">
+              <span>Metro Manila Chapter</span>
+              <span class="text-brand-petrol font-bold">Executive</span>
+            </div>
+          </div>
+
+          <!-- TIER 2: BOARD OF TRUSTEES -->
+
+          <!-- Chairperson -->
+          <div class="bg-white rounded-3xl p-6 border-2 border-brand-gold/40 shadow-sm card-hover-lift flex flex-col justify-between sr-item" data-leadership-card data-leadership-category="trustees">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-black bg-brand-ocean/10 text-brand-ocean tracking-wide" aria-label="National Capital Region">
+                  NCR
+                </span>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-brand-gold">
+                  Board of Trustees
+                </span>
+              </div>
+              <h3 class="text-xl font-extrabold text-brand-petrol leading-snug mb-1">Joniro F. Fradejas</h3>
+              <p class="text-sm font-bold text-brand-charcoal">Chairperson</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-400">
+              <span>Governance Board</span>
+              <span class="text-brand-gold font-bold">Trustee</span>
+            </div>
+          </div>
+
+          <!-- Vice Chairperson -->
+          <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm card-hover-lift flex flex-col justify-between sr-item" data-leadership-card data-leadership-category="trustees">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-black bg-brand-ocean/10 text-brand-ocean tracking-wide" aria-label="Region 10 Northern Mindanao">
+                  Region X
+                </span>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-brand-gold">
+                  Board of Trustees
+                </span>
+              </div>
+              <h3 class="text-xl font-extrabold text-brand-petrol leading-snug mb-1">Alpio G. Dacut, Jr.</h3>
+              <p class="text-sm font-bold text-gray-600">Vice Chairperson</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-400">
+              <span>Northern Mindanao Chapter</span>
+              <span class="text-brand-gold font-bold">Trustee</span>
+            </div>
+          </div>
+
+          <!-- Corporate Secretary -->
+          <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm card-hover-lift flex flex-col justify-between sr-item" data-leadership-card data-leadership-category="trustees">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-black bg-brand-ocean/10 text-brand-ocean tracking-wide" aria-label="National Capital Region">
+                  NCR
+                </span>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-brand-gold">
+                  Board of Trustees
+                </span>
+              </div>
+              <h3 class="text-xl font-extrabold text-brand-petrol leading-snug mb-1">Cheryl P. Borbe</h3>
+              <p class="text-sm font-bold text-gray-600">Corporate Secretary</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-400">
+              <span>Governance Board</span>
+              <span class="text-brand-gold font-bold">Trustee</span>
+            </div>
+          </div>
+
+          <!-- TIER 3: REGIONAL BOARD MEMBERS -->
+
+          <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm card-hover-lift flex flex-col justify-between sr-item" data-leadership-card data-leadership-category="board">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-black bg-brand-ocean/10 text-brand-ocean tracking-wide" aria-label="National Capital Region">
+                  NCR
+                </span>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400">
+                  Board Member
+                </span>
+              </div>
+              <h3 class="text-lg font-extrabold text-brand-petrol leading-snug mb-1">Marlon P. Publico</h3>
+              <p class="text-xs font-bold text-gray-500">Board Member</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gray-100 text-xs text-gray-400">National Capital Region</div>
+          </div>
+
+          <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm card-hover-lift flex flex-col justify-between sr-item" data-leadership-card data-leadership-category="board">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-black bg-brand-ocean/10 text-brand-ocean tracking-wide" aria-label="Cordillera Administrative Region">
+                  CAR
+                </span>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400">
+                  Board Member
+                </span>
+              </div>
+              <h3 class="text-lg font-extrabold text-brand-petrol leading-snug mb-1">Romeo N. Oli</h3>
+              <p class="text-xs font-bold text-gray-500">Board Member</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gray-100 text-xs text-gray-400">Cordillera Administrative Region</div>
+          </div>
+
+          <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm card-hover-lift flex flex-col justify-between sr-item" data-leadership-card data-leadership-category="board">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-black bg-brand-ocean/10 text-brand-ocean tracking-wide" aria-label="Region 2 Cagayan Valley">
+                  Region 2
+                </span>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400">
+                  Board Member
+                </span>
+              </div>
+              <h3 class="text-lg font-extrabold text-brand-petrol leading-snug mb-1">Edison G. Lamadrid</h3>
+              <p class="text-xs font-bold text-gray-500">Board Member</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gray-100 text-xs text-gray-400">Cagayan Valley Region</div>
+          </div>
+
+          <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm card-hover-lift flex flex-col justify-between sr-item" data-leadership-card data-leadership-category="board">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-black bg-brand-ocean/10 text-brand-ocean tracking-wide" aria-label="Region 9 Zamboanga Peninsula">
+                  Region 9
+                </span>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400">
+                  Board Member
+                </span>
+              </div>
+              <h3 class="text-lg font-extrabold text-brand-petrol leading-snug mb-1">Teddy M. Kahil</h3>
+              <p class="text-xs font-bold text-gray-500">Board Member</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gray-100 text-xs text-gray-400">Zamboanga Peninsula Region</div>
+          </div>
+
+          <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm card-hover-lift flex flex-col justify-between sr-item" data-leadership-card data-leadership-category="board">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-black bg-brand-ocean/10 text-brand-ocean tracking-wide" aria-label="Region 13 Caraga">
+                  Region XIII
+                </span>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400">
+                  Board Member
+                </span>
+              </div>
+              <h3 class="text-lg font-extrabold text-brand-petrol leading-snug mb-1">Jerry M. Micabalo</h3>
+              <p class="text-xs font-bold text-gray-500">Board Member</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gray-100 text-xs text-gray-400">Caraga Administrative Region</div>
+          </div>
+
+          <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm card-hover-lift flex flex-col justify-between sr-item" data-leadership-card data-leadership-category="board">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-black bg-brand-ocean/10 text-brand-ocean tracking-wide" aria-label="Bangsamoro Autonomous Region in Muslim Mindanao">
+                  BARMM
+                </span>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400">
+                  Board Member
+                </span>
+              </div>
+              <h3 class="text-lg font-extrabold text-brand-petrol leading-snug mb-1">Johaira T. Sultan</h3>
+              <p class="text-xs font-bold text-gray-500">Board Member</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gray-100 text-xs text-gray-400">Bangsamoro Autonomous Region</div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 7. Regional Alliance Summary & Chapter Map CTA -->
+    <section class="relative section-regions-gradient text-white py-20 px-4 sm:px-6 border-t border-brand-petrol overflow-hidden">
+      <!-- In-Section Ambient Glow Orb -->
+      <div class="ambient-glow glow-primary w-[400px] h-[400px] -bottom-24 -left-20" aria-hidden="true"></div>
+      <div class="max-w-5xl mx-auto text-center space-y-8 sr-item relative z-10">
+        <span class="text-xs font-black text-brand-highlime uppercase tracking-widest bg-brand-petrol px-4 py-1.5 rounded-full border border-brand-petrol-light">
+          Pambansang Saklaw
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold">
+          Alyansa ng 40+ na Samahan sa Lahat ng 17 Rehiyon
+        </h2>
+        <p class="text-sm sm:text-base text-gray-300 max-w-2xl mx-auto leading-relaxed">
+          Mula Batanes hanggang Tawi-Tawi, ang PKMKPI ay patuloy na nagtatayo at nagpapatibay ng mga lokal na kapisanan upang matiyak na walang taong may kapansanan ang maiiwan.
+        </p>
+
+        <div class="pt-4 flex flex-wrap justify-center gap-4">
+          <a href="index.html#regions" class="btn-pill-primary text-xs uppercase tracking-wider py-3.5 px-8 font-black shadow-xl">
+            Tuklasin ang 17 Regional Dossiers →
+          </a>
+          <a href="index.html#sectors" class="btn-pill-secondary text-xs uppercase tracking-wider py-3.5 px-8 font-bold border-2 border-brand-lime text-brand-lime hover:bg-brand-lime hover:text-brand-petrol transition-all">
+            Gabay sa 10 Uri ng Kapansanan
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Federation Creed & Call to Solidarity -->
+    <section class="relative section-footer-gradient text-white py-20 px-4 sm:px-6 overflow-hidden border-t border-brand-petrol">
+      <div class="ambient-glow glow-gold w-[350px] h-[350px] top-0 left-1/2 -translate-x-1/2" aria-hidden="true"></div>
+      <div class="max-w-4xl mx-auto text-center space-y-8 sr-item relative z-10">
+        <div class="w-16 h-16 mx-auto rounded-full bg-brand-lime/20 text-brand-highlime flex items-center justify-center text-3xl font-black">
+          🇵🇭
+        </div>
+
+        <div class="space-y-4">
+          <h2 class="text-2xl sm:text-4xl font-black tracking-tight text-brand-highlime">
+            “Isang Bansa. Isang Kapisanan. Isang Layunin.”
+          </h2>
+          <p class="text-xl sm:text-2xl font-serif italic text-gray-200">
+            Walang Iwanan. Lahat ay Mahalaga.
+          </p>
+        </div>
+
+        <p class="text-sm text-gray-300 max-w-xl mx-auto leading-relaxed">
+          Sama-sama nating itaguyod ang isang makatarungan, makatao, at inklusibong lipunan para sa bawat mamamayang may kapansanan.
+        </p>
+
+        <div class="pt-4 flex justify-center gap-4">
+          <a href="index.html#contribute" class="btn-pill-primary text-xs uppercase tracking-wider py-4 px-10 font-black shadow-2xl hover:scale-105 transition-transform">
+            Mag-Ambag sa Pederasyon
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 9. Site Footer & Official Compliance -->
+  <footer class="bg-brand-petrol-dark text-white border-t border-brand-petrol pt-16 pb-12 px-4 sm:px-6 relative z-10">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+      
+      <!-- Col 1: Organization Credentials -->
+      <div class="space-y-4 md:col-span-2">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-full bg-brand-petrol border border-brand-lime flex items-center justify-center p-0.5">
+            <img src="https://hercules-cdn.com/file_i4OBoUSEzlHLaDR5Aq9cATGe" alt="PKMKPI seal" class="w-full h-full object-contain rounded-full">
+          </div>
+          <span class="font-black text-base tracking-tight text-white">PKMKPI</span>
+        </div>
+        <p class="text-xs text-gray-300 leading-relaxed max-w-sm">
+          Pambansang Kapisanan ng mga May Kapansanan ng Pilipinas, Inc. Non-stock, non-profit national federation under SEC Reg. No. CN202105447.
+        </p>
+        <p class="text-xs text-gray-400 font-mono">
+          98 Major Marcos St., Area 2, Veterans Village, Pasong Tamo, Quezon City, Philippines
+        </p>
+      </div>
+
+      <!-- Col 2: Quick Links -->
+      <div class="space-y-3">
+        <h4 class="text-xs font-black text-brand-highlime uppercase tracking-wider">Mga Pahina</h4>
+        <ul class="text-xs space-y-2 text-gray-300 font-medium">
+          <li><a href="index.html" class="hover:text-brand-lime transition-colors">Home</a></li>
+          <li><a href="about.html" class="hover:text-brand-lime transition-colors text-brand-highlime font-bold">About Us</a></li>
+          <li><a href="index.html#aeiou" class="hover:text-brand-lime transition-colors">AEIOU Pillars</a></li>
+          <li><a href="index.html#values" class="hover:text-brand-lime transition-colors">Core Values</a></li>
+          <li><a href="index.html#regions" class="hover:text-brand-lime transition-colors">17 Regions</a></li>
+          <li><a href="index.html#sectors" class="hover:text-brand-lime transition-colors">Disability Guide</a></li>
+          <li><a href="index.html#support" class="hover:text-brand-lime transition-colors">Support Us</a></li>
+          <li><a href="index.html#contact" class="hover:text-brand-lime transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Social & Community Channels -->
+      <div class="space-y-3">
+        <h4 class="text-xs font-black text-brand-gold uppercase tracking-wider">Sundan Kami</h4>
+        <ul class="text-xs space-y-2 text-gray-300">
+          <li>
+            <a href="https://www.facebook.com/pkmkp.inc" target="_blank" rel="noopener noreferrer" class="hover:text-brand-lime transition-colors flex items-center space-x-2">
+              <span>📘</span>
+              <span>Official Facebook Page</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com/groups/116620011736160" target="_blank" rel="noopener noreferrer" class="hover:text-brand-lime transition-colors flex items-center space-x-2">
+              <span>👥</span>
+              <span>PWD National Federation Group</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com/groups/1975960459395154" target="_blank" rel="noopener noreferrer" class="hover:text-brand-lime transition-colors flex items-center space-x-2">
+              <span>🇵🇭</span>
+              <span>PWD National Group</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="max-w-7xl mx-auto mt-12 pt-6 border-t border-brand-petrol text-center text-xs text-gray-400">
+      <p>© 2020 – 2026 Pambansang Kapisanan ng mga May Kapansanan ng Pilipinas, Inc. (PKMKPI). All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- 10. Persistent PWD Accessibility Floating Suite (Alt+A) -->
+  <button id="a11y-fab" type="button" class="fixed bottom-6 right-6 z-40 bg-brand-petrol text-brand-lime border-2 border-brand-lime w-14 h-14 rounded-full shadow-2xl flex items-center justify-center focus:outline-none focus:ring-4 focus:ring-brand-highlime" aria-label="Accessibility Settings (Alt+A)" title="Open Accessibility Suite (Alt+A)">
+    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/>
+    </svg>
+  </button>
+
+  <aside id="a11y-panel" class="fixed bottom-24 right-6 z-50 bg-white text-brand-charcoal p-5 rounded-2xl shadow-2xl border-2 border-brand-petrol max-w-xs w-full hidden flex-col gap-3.5" role="dialog" aria-modal="true" aria-label="Accessibility Settings">
+    <div class="flex items-center justify-between border-b border-gray-200 pb-3">
+      <div class="flex items-center space-x-2">
+        <span class="text-lg">♿</span>
+        <h3 class="font-extrabold text-brand-petrol text-sm">Accessibility Settings</h3>
+      </div>
+      <button id="a11y-close" class="text-gray-400 hover:text-gray-700 p-1 rounded-md text-sm font-bold" aria-label="Close accessibility panel">✕</button>
+    </div>
+
+    <div class="space-y-3.5 text-xs">
+      <!-- 1. Text Sizing -->
+      <div>
+        <div class="flex justify-between items-center mb-1.5 cursor-pointer" data-action="font-scale" role="button" tabindex="0" title="Click to cycle font size">
+          <span class="font-bold text-gray-800">Text Size</span>
+          <span id="font-scale-indicator" class="font-extrabold text-brand-petrol font-mono">100%</span>
+        </div>
+        <div class="grid grid-cols-3 gap-1.5">
+          <button type="button" data-a11y-font="decrease" class="p-2 border border-gray-200 rounded-lg font-bold hover:bg-gray-100 text-center transition-colors" title="Decrease font size (90%)">A-</button>
+          <button type="button" data-a11y-font="reset" class="p-2 border border-gray-200 rounded-lg font-bold hover:bg-gray-100 text-center transition-colors" title="Reset font size to 100%">Reset</button>
+          <button type="button" data-a11y-font="increase" class="p-2 border border-gray-200 rounded-lg font-bold hover:bg-gray-100 text-center transition-colors" title="Increase font size (115%)">A+</button>
+        </div>
+      </div>
+
+      <!-- 2. High Contrast AAA -->
+      <div>
+        <button data-action="high-contrast" id="a11y-contrast-toggle" class="w-full p-2.5 border border-gray-200 rounded-lg font-bold flex items-center justify-between hover:bg-gray-50 transition-colors">
+          <span>👁️ High Contrast (AAA)</span>
+          <span class="text-[10px] text-gray-500 font-mono">Dark & Gold</span>
+        </button>
+      </div>
+
+      <!-- 3. Dyslexia / High Legibility Mode -->
+      <div>
+        <button data-action="dyslexia" id="a11y-dyslexia-toggle" class="w-full p-2.5 border border-gray-200 rounded-lg font-bold flex items-center justify-between hover:bg-gray-50 transition-colors">
+          <span>📖 Dyslexia-Friendly Text</span>
+          <span class="text-[10px] text-gray-500 font-mono">OpenDyslexic</span>
+        </button>
+      </div>
+
+      <!-- 4. Pause Motion Switch -->
+      <div>
+        <button data-action="pause-motion" id="a11y-motion-toggle" class="w-full p-2.5 border border-gray-200 rounded-lg font-bold flex items-center justify-between hover:bg-gray-50 transition-colors">
+          <span>⏸️ Pause All Animations</span>
+          <span class="text-[10px] text-gray-500 font-mono">Reduced Motion</span>
+        </button>
+      </div>
+
+      <!-- 5. Voice Reader (TTS) -->
+      <div>
+        <button data-action="tts-read" class="w-full p-2.5 bg-brand-lime text-brand-petrol rounded-lg font-black flex items-center justify-between shadow-sm hover:brightness-105 transition-all">
+          <span>🔊 Read Page (TTS)</span>
+          <span class="text-[10px] uppercase font-mono">Web Speech</span>
+        </button>
+      </div>
+
+      <!-- 6. Reset All Preferences -->
+      <div>
+        <button type="button" id="a11y-reset-all" data-a11y-reset="all" class="w-full p-2 border border-gray-200 hover:border-red-300 text-gray-600 hover:text-red-600 rounded-lg font-bold hover:bg-red-50 text-xs transition-colors flex items-center justify-center gap-1.5" title="Reset all accessibility settings to default">
+          <span>↺</span>
+          <span>Reset All Settings</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Toast Notification Container -->
+  <div id="copy-toast" class="copy-toast" role="status" aria-live="polite">
+    <svg class="w-5 h-5 text-brand-lime flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+    </svg>
+    <span id="copy-toast-msg" class="text-xs font-bold text-white">Na-kopya sa clipboard!</span>
+  </div>
+
+  <!-- Scripts: GSAP 3.12.5 + ScrollTrigger & Project Modules -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="src/scripts/animations.js?v=20260828w"></script>
+  <script src="src/scripts/accessibility.js?v=20260828w"></script>
+  <script src="src/scripts/interactive-sections.js?v=20260828w"></script>
+<!-- impeccable-live-start -->
+<script src="http://localhost:8400/live.js?token=38261869-d442-4d8e-a257-6afe1973c9d3"></script>
+<!-- impeccable-live-end -->
+</body>
+</html>

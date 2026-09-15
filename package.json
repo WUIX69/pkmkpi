@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/templates.mjs export && next build",
     "start": "next start",
     "lint": "eslint",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
@@ -14,7 +14,8 @@
     "templates:serve": "node scripts/templates.mjs serve",
     "templates:serve:all": "node scripts/templates.mjs serve:all",
     "templates:audit": "python templates/tests/audit_all_templates.py",
-    "templates:kill": "node scripts/templates.mjs kill"
+    "templates:kill": "node scripts/templates.mjs kill",
+    "templates:export": "node scripts/templates.mjs export"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",

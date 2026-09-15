@@ -295,6 +295,7 @@ export async function startAllForeground() {
       cwd: viteCwd,
       stdio: ["ignore", viteLog, viteLog],
       shell: false,
+      windowsHide: true,
     });
     pids["leonor-olivera"] = { pid: viteChild.pid, port: viteConfig.port, type: "vite" };
     console.log(`+ [leonor-olivera] Vite process launched on port ${viteConfig.port} (PID: ${viteChild.pid})`);
@@ -311,6 +312,7 @@ export async function startAllForeground() {
       cwd: ROOT_DIR,
       stdio: ["ignore", phpLog, phpLog],
       shell: false,
+      windowsHide: true,
     });
     pids["neil-datuin-caguioa"] = { pid: phpChild.pid, port: phpConfig.port, type: "php" };
     console.log(`+ [neil-datuin-caguioa] PHP process launched on port ${phpConfig.port} (PID: ${phpChild.pid})`);
@@ -360,6 +362,7 @@ async function serveTemplate(name) {
       cwd,
       stdio: "inherit",
       shell: false,
+      windowsHide: true,
     });
     console.log(`Template "${name}" [${config.type}] process running (PID: ${child.pid})...`);
     child.on("exit", (code) => process.exit(code || 0));
@@ -377,6 +380,7 @@ async function serveAll() {
     cwd: ROOT_DIR,
     detached: true,
     stdio: "ignore",
+    windowsHide: true,
   });
   child.unref();
 
@@ -396,7 +400,7 @@ async function killAll() {
     try {
       console.log(`Killing ${name} (PID: ${info.pid})...`);
       if (process.platform === "win32") {
-        spawn("taskkill", ["/F", "/T", "/PID", String(info.pid)], { stdio: "ignore" });
+        spawnSync("taskkill", ["/F", "/T", "/PID", String(info.pid)], { stdio: "ignore", windowsHide: true });
       } else {
         process.kill(info.pid, "SIGTERM");
       }
@@ -413,10 +417,146 @@ async function killAll() {
   if (process.platform === "win32") {
     const ports = Object.values(TEMPLATES).map((t) => t.port).join(",");
     const psCmd = `Get-NetTCPConnection -LocalPort ${ports} -ErrorAction SilentlyContinue | Select -ExpandProperty OwningProcess -Unique | ForEach-Object { Stop-Process -Id $_ -Force -ErrorAction SilentlyContinue }`;
-    spawnSync("powershell", ["-NoProfile", "-Command", psCmd], { stdio: "ignore" });
+    spawnSync("powershell", ["-NoProfile", "-Command", psCmd], { stdio: "ignore", windowsHide: true });
   }
 
   console.log("Template processes terminated cleanly.");
+}
+
+/**
+ * Bundles all 7 templates into public/templates-preview/<slug>/:
+ * - Clean/ensure public/templates-preview/ directory.
+ * - Copy static templates (violeta-jonathan-l, arcel, glen-martin, john-jhonard-de-robles, renzo) to public/templates-preview/<slug>/.
+ * - Run Vite build for leonor-olivera (spawnSync npm run build in templates/leonor-olivera) and copy dist/ to public/templates-preview/leonor-olivera/.
+ * - Render/snapshot neil-datuin-caguioa PHP pages (index\.php, about\.php, contact\.php, contribute\.php, news\.php, press\.php, support\.php) to static HTML with .php link rewriting, and copy assets/ + uploads/ to public/templates-preview/neil-datuin-caguioa/.
+ */
+export async function exportTemplates() {
+  const PREVIEW_DIR = path.join(ROOT_DIR, "public", "templates-preview");
+  console.log(`[Export] Bundling all templates to ${PREVIEW_DIR}...`);
+
+  // Clean / ensure destination
+  if (fs.existsSync(PREVIEW_DIR)) {
+    fs.rmSync(PREVIEW_DIR, { recursive: true, force: true });
+  }
+  fs.mkdirSync(PREVIEW_DIR, { recursive: true });
+
+  // 1. Copy static templates
+  const staticTemplates = [
+    { slug: "violeta-jonathan-l", src: path.join(ROOT_DIR, "templates", "violeta-jonathan-l") },
+    { slug: "arcel", src: path.join(ROOT_DIR, "templates", "arcel", "public") },
+    { slug: "glen-martin", src: path.join(ROOT_DIR, "templates", "glen-martin") },
+    { slug: "john-jhonard-de-robles", src: path.join(ROOT_DIR, "templates", "john-jhonard-de-robles") },
+    { slug: "renzo", src: path.join(ROOT_DIR, "templates", "renzo") },
+  ];
+
+  for (const { slug, src } of staticTemplates) {
+    const dest = path.join(PREVIEW_DIR, slug);
+    console.log(`[Export] Copying static template "${slug}"...`);
+    fs.cpSync(src, dest, {
+      recursive: true,
+      filter: (srcPath) => !srcPath.includes("node_modules") && !srcPath.includes(".git"),
+    });
+  }
+
+  // 2. Build and copy leonor-olivera (Vite)
+  const leonorDir = path.join(ROOT_DIR, "templates", "leonor-olivera");
+  const viteBin = path.join(leonorDir, "node_modules", "vite", "bin", "vite.js");
+  console.log(`[Export] Building Vite template "leonor-olivera"...`);
+  let buildRes;
+  if (fs.existsSync(viteBin)) {
+    buildRes = spawnSync(process.execPath, [viteBin, "build"], {
+      cwd: leonorDir,
+      stdio: "inherit",
+      shell: false,
+      windowsHide: true,
+    });
+  } else {
+    const isWindows = process.platform === "win32";
+    const npmCmd = isWindows ? "npm.cmd" : "npm";
+    buildRes = spawnSync(npmCmd, ["run", "build"], {
+      cwd: leonorDir,
+      stdio: "inherit",
+      shell: isWindows,
+      windowsHide: true,
+    });
+  }
+  if (buildRes.status !== 0) {
+    console.error(`[Export] Warning: Vite build for leonor-olivera exited with status ${buildRes.status}`);
+  }
+  const leonorDist = path.join(leonorDir, "dist");
+  const leonorDest = path.join(PREVIEW_DIR, "leonor-olivera");
+  if (fs.existsSync(leonorDist)) {
+    fs.cpSync(leonorDist, leonorDest, { recursive: true });
+  } else {
+    console.error(`[Export] Warning: ${leonorDist} not found after build.`);
+  }
+
+  // 3. Snapshot and copy neil-datuin-caguioa (PHP)
+  const neilSrc = path.join(ROOT_DIR, "templates", "neil-datuin-caguioa");
+  const neilDest = path.join(PREVIEW_DIR, "neil-datuin-caguioa");
+  fs.mkdirSync(neilDest, { recursive: true });
+
+  // Copy assets and uploads
+  const neilAssets = path.join(neilSrc, "assets");
+  if (fs.existsSync(neilAssets)) {
+    fs.cpSync(neilAssets, path.join(neilDest, "assets"), { recursive: true });
+  }
+  const neilUploads = path.join(neilSrc, "uploads");
+  if (fs.existsSync(neilUploads)) {
+    fs.cpSync(neilUploads, path.join(neilDest, "uploads"), { recursive: true });
+  }
+
+  const phpBinary =
+    process.platform === "win32" &&
+    fs.existsSync("C:\\Users\\Administrator\\.config\\herd-lite\\bin\\php.exe")
+      ? "C:\\Users\\Administrator\\.config\\herd-lite\\bin\\php.exe"
+      : "php";
+
+  const phpPages = [
+    "index.php",
+    "about.php",
+    "contact.php",
+    "contribute.php",
+    "news.php",
+    "press.php",
+    "support.php",
+  ];
+  const pagesList = "index|about|contact|contribute|news|press|support";
+  const extlessRegex = new RegExp(`href=["'](${pagesList})([#?][^"']*)?["']`, "g");
+
+  console.log(`[Export] Rendering PHP pages for "neil-datuin-caguioa"...`);
+  for (const page of phpPages) {
+    const res = spawnSync(
+      phpBinary,
+      ["-d", "display_errors=0", "-d", "error_reporting=0", "-f", page],
+      {
+        cwd: neilSrc,
+        encoding: "utf-8",
+        windowsHide: true,
+      }
+    );
+
+    let html = res.stdout || "";
+    const docIdx = html.indexOf("<!");
+    if (docIdx > 0) {
+      html = html.slice(docIdx);
+    }
+
+    // Rewrite .php links to .html
+    html = html.replace(/href=["']([a-zA-Z0-9_-]+)\.php([#?][^"']*)?["']/g, (m, p1, p2) => {
+      return `href="${p1}.html${p2 || ""}"`;
+    });
+
+    // Rewrite extensionless page links to .html
+    html = html.replace(extlessRegex, (m, p1, p2) => {
+      return `href="${p1}.html${p2 || ""}"`;
+    });
+
+    const outFileName = page.replace(/\.php$/, ".html");
+    fs.writeFileSync(path.join(neilDest, outFileName), html, "utf-8");
+  }
+
+  console.log(`[Export] All 7 templates successfully exported to ${PREVIEW_DIR}`);
 }
 
 // CLI entry point
@@ -440,12 +580,13 @@ switch (command) {
   case "serve:all":
     await serveAll();
     break;
+  case "export":
+    await exportTemplates();
+    break;
   case "kill":
     await killAll();
     break;
   default:
-    console.error(`Unknown command: "${command}". Available: list, daemon, serve, serve:all, kill`);
+    console.error(`Unknown command: "${command}". Available: list, daemon, serve, serve:all, export, kill`);
     process.exit(1);
 }
-
-

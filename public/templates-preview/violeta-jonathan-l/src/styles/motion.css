@@ -1,0 +1,160 @@
+/* PKMKPI V2 Comprehensive 4-Tier Motion & Micro-Interaction Engine */
+
+/* ==========================================================================
+   Tier 1: 3D Perspective Tilt Physics with Specular Lighting
+   ========================================================================== */
+.tilt-card,
+.bank-card,
+.img-overlay-card {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  overflow: visible !important;
+  will-change: transform, box-shadow;
+  transition: box-shadow 0.25s ease !important;
+}
+
+.tilt-card {
+  overflow: visible !important;
+  cursor: pointer;
+}
+
+.tilt-card:hover {
+  box-shadow: 0 20px 45px -10px rgba(6, 51, 60, 0.35);
+}
+
+.tilt-card:focus-visible,
+.bank-card:focus-visible {
+  outline: 3px solid #80BC2F !important;
+  outline-offset: 4px !important;
+  box-shadow: 0 16px 32px -8px rgba(6, 51, 60, 0.3) !important;
+}
+
+/* ==========================================================================
+   Tier 1B: Cursor-Following Spotlight / Flashlight Effect (Sectoral Cards)
+   ========================================================================== */
+.spotlight-card {
+  position: relative;
+  overflow: hidden !important;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.spotlight-card:hover {
+  border-color: rgba(128, 188, 47, 0.85) !important;
+  box-shadow: 0 18px 36px -6px rgba(6, 51, 60, 0.45), 0 0 16px rgba(128, 188, 47, 0.2) !important;
+}
+
+.spotlight-card:focus-visible {
+  outline: 3px solid #80BC2F !important;
+  outline-offset: 4px !important;
+  box-shadow: 0 16px 32px -8px rgba(6, 51, 60, 0.3) !important;
+}
+
+.spotlight-beam {
+  position: absolute;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  inset: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 1;
+}
+
+
+/* Floating Tri-Corner Badges */
+.badge-floating-1 {
+  animation: floatBadge 4s ease-in-out infinite;
+}
+.badge-floating-2 {
+  animation: floatBadge 4s ease-in-out infinite 1.3s;
+}
+.badge-floating-3 {
+  animation: floatBadge 4s ease-in-out infinite 2.6s;
+}
+
+@keyframes floatBadge {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Ambient Glow Breathing */
+@keyframes floatGlow {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(20px, -20px) scale(1.08);
+  }
+  100% {
+    transform: translate(-15px, 15px) scale(0.95);
+  }
+}
+
+/* ==========================================================================
+   Tier 2: Clean 2D Micro-Lift Elevation & Magnetic Interactions
+   ========================================================================== */
+.card-hover-lift {
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  will-change: transform, box-shadow;
+  cursor: pointer;
+}
+
+.card-hover-lift:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 18px 36px -6px rgba(6, 51, 60, 0.16), 0 6px 12px -3px rgba(6, 51, 60, 0.08) !important;
+}
+
+.card-hover-lift:active {
+  transform: translateY(-2px) !important;
+}
+
+/* ==========================================================================
+   Tier 3: Prominent Scroll Reveal Engine & Stagger Choreography (GSAP Powered)
+   ========================================================================== */
+.sr-item {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+.sr-item.sr-left {
+  transform: translateX(-50px);
+}
+
+.sr-item.sr-right {
+  transform: translateX(50px);
+}
+
+.sr-item.sr-scale {
+  transform: scale(0.94) translateY(30px);
+}
+
+/* Active Revealed State */
+.sr-item.is-revealed,
+.sr-item.visible,
+.sr-item.is-visible {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Tier 4: Accessibility Motion Bypass (In-App PWD Toolbar Override)
+   ========================================================================== */
+body.animations-paused *,
+body.animations-paused *::before,
+body.animations-paused *::after {
+  animation-duration: 0.001s !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001s !important;
+  transform: none !important;
+  opacity: 1 !important;
+}
