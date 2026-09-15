@@ -16,16 +16,16 @@ function App() {
     <AccessibilityProvider>
       <HashRouter>
         <Routes>
-          <Route element={<MainLayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<AboutUs />} />
-            <Route path="/team" element={<OurTeam />} />
-            <Route path="/news" element={<News />} />
-            <Route path="/news/:slug" element={<NewsArticle />} />
-            <Route path="/press" element={<Press />} />
-            <Route path="/support" element={<SupportUs />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/contribute" element={<Contribute />} />
+          <Route path="/" element={<MainLayout />}>
+            <Route index element={<Home />} />
+            <Route path="about" element={<AboutUs />} />
+            <Route path="team" element={<OurTeam />} />
+            <Route path="news" element={<News />} />
+            <Route path="news/:slug" element={<NewsArticle />} />
+            <Route path="press" element={<Press />} />
+            <Route path="support" element={<SupportUs />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="contribute" element={<Contribute />} />
             <Route path="*" element={<Home />} />
           </Route>
         </Routes>
