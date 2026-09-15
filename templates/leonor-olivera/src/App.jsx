@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { HashRouter, Routes, Route } from "react-router-dom"
 import AccessibilityProvider from "./components/AccessibilityProvider"
 import MainLayout from "./layouts/MainLayout"
 import Home from "./pages/Home"
@@ -14,7 +14,7 @@ import Contribute from "./pages/Contribute"
 function App() {
   return (
     <AccessibilityProvider>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />
@@ -26,9 +26,10 @@ function App() {
             <Route path="/support" element={<SupportUs />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/contribute" element={<Contribute />} />
+            <Route path="*" element={<Home />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </AccessibilityProvider>
   )
 }
