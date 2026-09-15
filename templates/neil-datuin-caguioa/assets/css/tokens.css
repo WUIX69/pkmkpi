@@ -1,0 +1,33 @@
+/* assets/css/tokens.css - Palitan ang :root block nito */
+:root {
+  /* Modern Green Theme */
+  --color-primary-navy: #022c22; /* Very Dark Jungle Green */
+  --color-primary-dark: #064e3b; /* Deep Forest Green */
+  --color-primary-light: #047857; /* Emerald */
+  --color-accent-gold: #fbbf24; /* Warm Yellow Gold */
+  --color-accent-green: #65a30d; /* Lime Green */
+  --color-accent-green-bright: #84cc16; /* Bright Lime */
+  
+  /* Neutrals */
+  --color-ink: #0f172a;
+  --color-ink-light: #334155;
+  --color-ink-muted: #64748b;
+  --color-canvas: #ffffff;
+  --color-canvas-subtle: #f8fafc;
+  --color-surface-soft: #f1f5f9;
+  --color-hairline: #e2e8f0;
+  --color-hairline-strong: #cbd5e1;
+
+  --font-sans: 'Montserrat', -apple-system, sans-serif;
+  --font-serif: 'Merriweather', serif;
+  --font-scale: 1.0;
+}
+
+html, body {
+  font-family: var(--font-sans);
+  font-size: calc(16px * var(--font-scale));
+  overflow-x: hidden !important; /* Strict Mobile Containment */
+  max-width: 100vw !important;
+  color: var(--color-ink);
+  background-color: var(--color-canvas);
+}
